@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Home from './Home';
+import Login from './Login';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import './App.css';
 
 function App() {
+
+  const [user,setUser] = useState();
+  const auth = getAuth(); //Nos permite usar todas las funciones de autenticación de firebase
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUser(user);
+    } else {
+      setUser(null);
+    }
+  });
+
   return (
+    <>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    {/* Si el usuario esta loggeado voy a Home sino Login */}
+    {user ? (<Home />) :(<Login/>)}
     </div>
+    </>
   );
 }
 
