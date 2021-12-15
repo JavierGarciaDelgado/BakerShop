@@ -1,14 +1,15 @@
 import React from "react";
 import Navbar from "../Components/Navbar"
 
-function Home() {
+function Account() {
   
-
+  
   return (
     <div>
             <Navbar/>
+            Account
     </div>
   );
 }
 
-export default Home;
+export default Account;

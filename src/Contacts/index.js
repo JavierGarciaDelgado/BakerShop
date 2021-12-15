@@ -1,14 +1,15 @@
 import React from "react";
 import Navbar from "../Components/Navbar"
 
-function Home() {
+function Contacts() {
   
-
+  
   return (
     <div>
             <Navbar/>
+            Contacts
     </div>
   );
 }
 
-export default Home;
+export default Contacts;

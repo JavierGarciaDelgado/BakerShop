@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {loginWithGoogle,logout,CreateWithEmail} from '../Config/firebase'
+import {loginWithGoogle,LoginWithPassword} from '../Config/firebase'
 import { Link } from "react-router-dom";
 import './login.css';
 
@@ -13,13 +13,10 @@ function Login() {
         e.preventDefault();
         loginWithGoogle();
     }
-    const log_out = (e) => {
+    
+    const loginPassword = (e) => {
         e.preventDefault();
-        logout();
-    }
-    const createEmail = (e) => {
-        e.preventDefault();
-        CreateWithEmail(email,password);
+        LoginWithPassword(email, password)
     }
 
     
@@ -42,12 +39,11 @@ function Login() {
                                 <input onChange={e => setPassword(e.target.value)} type="password" name="password" id="password" class="form-control"/>
                             </div>
                             <div class="form-group mt-3">
-                                <input onClick={createEmail} type="submit" name="submit" class="btn btn-info btn-md" value="submit"/>
+                                <input onClick={loginPassword} type="submit" name="submit" class="btn btn-info btn-md" value="submit"/>
                                 <Link to = '/Register' class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</Link>
                             </div>
                         </form>
                         <button onClick={loginGoogle}>Google</button>
-                        <button onClick={log_out}>logout</button>
                     </div>
                 </div>
             </div>
