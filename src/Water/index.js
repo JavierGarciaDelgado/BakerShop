@@ -1,14 +1,14 @@
 import React from "react";
 import Header from "../Components/Header"
 
-function Products() {
+function Water() {
   
   return (
     <div>
             <Header/>
-            products
+            water
     </div>
   );
 }
 
-export default Products;
+export default Water;

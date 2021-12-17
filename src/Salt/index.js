@@ -1,14 +1,14 @@
 import React from "react";
 import Header from "../Components/Header"
 
-function Products() {
+function Salt() {
   
   return (
     <div>
             <Header/>
-            products
+            Salt
     </div>
   );
 }
 
-export default Products;
+export default Salt;

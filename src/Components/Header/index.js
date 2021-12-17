@@ -1,0 +1,45 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { logout } from "../../Config/firebase";
+import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import "./Header.css";
+const Header = () => {
+  const log_out = (e) => {
+    e.preventDefault();
+    logout();
+  };
+  return (
+    <Navbar bg="light" expand="lg">
+      <Container>
+        <Navbar.Brand><Link to="/">BakerShop</Link></Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <NavDropdown title="Products" id="basic-nav-dropdown">
+              <NavDropdown.Item>
+                <Link to="/Flour">Flour</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/Salt">Salt</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/Water">Water</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/Yeast">Yeast</Link>
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link>
+              <Link to="/Contacts">Contacts</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="/Account">Account</Link>
+            </Nav.Link>
+            <Nav.Link onClick={log_out}>Log out</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
+export default Header;

@@ -14,8 +14,6 @@ function Register() {
         e.preventDefault();
         if(valid){
             CreateWithEmail(email,password);
-        }else{
-            alert("Password don't match")
         }
     }
     const validatePassword = () => {
@@ -42,13 +40,13 @@ function Register() {
     }
 
     return ( 
-        <form action="/Register/" class="form-signup">
-        <input type="text" id="user-name" class="form-control" placeholder="Full name" required="" autofocus=""/>
-        <input onChange={e => setEmail(e.target.value)} type="email" id="user-email" class="form-control" placeholder="Email address" required autofocus=""/>
-        <input onChange={e => setPassword(e.target.value)} type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus=""/>
-        <input onChange={validatePassword}type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required autofocus=""/>
+        <form onSubmit={createEmail} class="form-signup">
+        <input type="text" id="user-name" class="form-control" placeholder="Full name" required autofocus=""/>
+        <input onChange={e => setEmail(e.target.value)} type="email" id="user-email" class="form-control" placeholder="Email address" required />
+        <input onChange={e => setPassword(e.target.value)} type="password" id="user-pass" class="form-control" placeholder="Password" required />
+        <input onChange={validatePassword}type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required />
         <p id="message"></p>
-        <button onClick={createEmail} class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
+        <button type="submit" class="btn btn-primary btn-block" ><i class="fas fa-user-plus"></i> Sign Up</button>
         <Link to ="/" id="cancel_Register"><i class="fas fa-angle-left"></i> Back</Link>
     </form>
     )

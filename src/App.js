@@ -8,6 +8,10 @@ import "./App.css";
 import Products from "./Products";
 import Contacts from "./Contacts";
 import Account from "./Account";
+import Salt from "./Salt";
+import Water from "./Water";
+import Yeast from "./Yeast";
+import Flour from "./Flour";
 
 
 function App() {
@@ -32,6 +36,10 @@ function App() {
         <Route path="/Products" element={user ? <Products /> : <Login />} />
         <Route path="/Contacts" element={user ? <Contacts /> : <Login />} />
         <Route path="/Account" element={user ? <Account /> : <Login />} />
+        <Route path="/Salt" element={user ? <Salt /> : <Login />} />
+        <Route path="/Water" element={user ? <Water /> : <Login />} />
+        <Route path="/Yeast" element={user ? <Yeast /> : <Login />} />
+        <Route path="/Flour" element={user ? <Flour /> : <Login />} />
       </Routes>
       <div className="App"></div>
     </Router>

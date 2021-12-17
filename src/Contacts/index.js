@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "../Components/Navbar"
+import Header from "../Components/Header"
 
 function Contacts() {
   
   
   return (
     <div>
-            <Navbar/>
+            <Header/>
             Contacts
     </div>
   );

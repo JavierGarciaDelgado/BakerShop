@@ -1,14 +1,14 @@
 import React from "react";
 import Header from "../Components/Header"
 
-function Products() {
+function Yeast() {
   
   return (
     <div>
             <Header/>
-            products
+            yeast
     </div>
   );
 }
 
-export default Products;
+export default Yeast;
