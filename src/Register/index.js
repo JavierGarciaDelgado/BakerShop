@@ -40,14 +40,14 @@ function Register() {
     }
 
     return ( 
-        <form onSubmit={createEmail} class="form-signup">
-        <input type="text" id="user-name" class="form-control" placeholder="Full name" required autofocus=""/>
-        <input onChange={e => setEmail(e.target.value)} type="email" id="user-email" class="form-control" placeholder="Email address" required />
-        <input onChange={e => setPassword(e.target.value)} type="password" id="user-pass" class="form-control" placeholder="Password" required />
-        <input onChange={validatePassword}type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required />
+        <form onSubmit={createEmail} className="form-signup">
+        <input type="text" id="user-name" className="form-control" placeholder="Full name" required autofocus=""/>
+        <input onChange={e => setEmail(e.target.value)} type="email" id="user-email" className="form-control" placeholder="Email address" required />
+        <input onChange={e => setPassword(e.target.value)} type="password" id="user-pass" className="form-control" placeholder="Password" required />
+        <input onChange={validatePassword}type="password" id="user-repeatpass" className="form-control" placeholder="Repeat Password" required />
         <p id="message"></p>
-        <button type="submit" class="btn btn-primary btn-block" ><i class="fas fa-user-plus"></i> Sign Up</button>
-        <Link to ="/" id="cancel_Register"><i class="fas fa-angle-left"></i> Back</Link>
+        <button type="submit" className="btn btn-primary btn-block" ><i class="fas fa-user-plus"></i> Sign Up</button>
+        <Link to ="/" id="cancel_Register"><i className="fas fa-angle-left"></i> Back</Link>
     </form>
     )
 }

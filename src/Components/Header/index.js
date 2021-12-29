@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand><Link to="/">BakerShop</Link></Navbar.Brand>
+        <Navbar.Brand><Nav.Link as={Link} to="/">BakerShop</Nav.Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -29,12 +29,8 @@ const Header = () => {
                 <Link to="/Yeast">Yeast</Link>
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link>
-              <Link to="/Contacts">Contacts</Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to="/Account">Account</Link>
-            </Nav.Link>
+            <Nav.Link as={Link} to="/Contacts">Contacts</Nav.Link>
+            <Nav.Link as={Link} to="/Account">Account</Nav.Link>
             <Nav.Link onClick={log_out}>Log out</Nav.Link>
           </Nav>
         </Navbar.Collapse>
