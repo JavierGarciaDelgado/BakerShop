@@ -11,7 +11,7 @@ function CardComponent(props) {
           <Card.Text>
             {props.text}
           </Card.Text>
-          <Button variant="primary">Go and buy it</Button>
+          <Button variant="primary">{props.price + "€ just for now"}</Button>
         </Card.Body>
       </Card>
     </div>

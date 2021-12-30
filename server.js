@@ -5,7 +5,7 @@ const { mongoose } = require("./database");
 // mongoDB
 
 //Routes
-app.use("/api/Flour", require("./routes/Flour.routes"));
+app.use("/api/Product", require("./routes/Product.routes"));
 
 // Server connection
 

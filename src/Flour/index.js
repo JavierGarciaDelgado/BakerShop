@@ -3,7 +3,7 @@ import Header from "../Components/Header"
 
 function Flour() {
   const fetchFlour = function() {
-    fetch("localhost:5000/api/Flour")
+    fetch("localhost:5000/api/Product")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

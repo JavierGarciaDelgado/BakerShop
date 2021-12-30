@@ -4,17 +4,17 @@ import CardComponent from "../CardsComponent";
 import axios from "axios";
 
 function GridComponent() {
-  const [allFlours, setAllFlours] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
 
-  const getFlours = () => {
-    axios.get("http://localhost:5000/api/Flour").then((res) => {
-      const flours = res.data;
-      setAllFlours(flours);
+  const getProducts = () => {
+    axios.get("http://localhost:5000/api/Product").then((res) => {
+      const products = res.data;
+      setAllProducts(products);
     });
   };
 
   useEffect(() => {
-    getFlours();
+    getProducts();
     console.log("hola");
   }, []);
 
@@ -22,13 +22,14 @@ function GridComponent() {
     <div>
       <Container>
         <Row>
-          {allFlours.map((flour) => (
+          {allProducts.map((product) => (
             <Col sm>
               {" "}
               <CardComponent
                 image="holder.js/100px180"
-                title= {flour.name}
-                text= {flour.peso}
+                title= {product.name}
+                text= {product.weight}
+                price= {product.price}
               />
             </Col>
           ))}
