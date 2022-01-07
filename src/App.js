@@ -8,7 +8,6 @@ import "./App.css";
 import Products from "./Products";
 import Contacts from "./Contacts";
 import Account from "./Account";
-import Salt from "./Salt";
 
 
 function App() {
@@ -30,14 +29,12 @@ function App() {
         {/* Si el usuario esta loggeado voy a Home sino Login */}
         <Route path="/Login" element={user ? <Home /> : <Login />} />
         <Route path="/Register" element={user ? <Home /> : <Register />} />
-        <Route path="/Products" element={user ? <Products /> : <Login />} />
         <Route path="/Contacts" element={user ? <Contacts /> : <Login />} />
         <Route path="/Account" element={user ? <Account /> : <Login />} />
-        <Route path="/Salt/salt" element={user ? <Salt key="salt" type="salt" /> : <Login />} />
-        <Route path="/Salt/harina" element={user ? <Salt key="harina" type="harina" /> : <Login />} />
-        {/*<Route path="/Water" element={user ? <Water /> : <Login />} />
-        <Route path="/Yeast" element={user ? <Yeast /> : <Login />} />
-  <Route path="/Flour" element={user ? <Flour /> : <Login />} />*/}
+        <Route path="/Products/salt" element={user ? <Products key="salt" type="salt" /> : <Login />} />
+        <Route path="/Products/flour" element={user ? <Products key="flour" type="flour" /> : <Login />} />
+        <Route path="/Products/yeast" element={user ? <Products key="yeast" type="yeast" /> : <Login />} />
+        <Route path="/Products/bread" element={user ? <Products key="bread" type="bread" /> : <Login />} />
       </Routes>
       <div className="App"></div>
     </Router>

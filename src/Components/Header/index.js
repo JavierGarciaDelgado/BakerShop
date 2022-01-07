@@ -17,10 +17,16 @@ const Header = () => {
           <Nav className="me-auto">
             <NavDropdown title="Products" id="basic-nav-dropdown">
               <NavDropdown.Item>
-                <Link className="subenlace" to="/Salt/harina">Flour</Link>
+                <Link className="subenlace" to="/Products/flour">Flour</Link>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <Link className="subenlace" to="/Salt/salt">Salt</Link>
+                <Link className="subenlace" to="/Products/salt">Salt</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link className="subenlace" to="/Products/yeast">Yeast</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link className="subenlace" to="/Products/bread">Bread</Link>
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to="/Contacts">Contacts</Nav.Link>
