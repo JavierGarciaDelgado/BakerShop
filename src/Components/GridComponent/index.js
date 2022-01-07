@@ -15,18 +15,18 @@ function GridComponent() {
 
   useEffect(() => {
     getProducts();
-    console.log("hola");
   }, []);
 
   return (
-    <div>
+    <div className="mt-4">
       <Container>
         <Row>
           {allProducts.map((product) => (
             <Col sm>
               {" "}
               <CardComponent
-                image="holder.js/100px180"
+                id = {product._id}
+                image= {product.image}
                 title= {product.name}
                 text= {product.weight}
                 price= {product.price}
