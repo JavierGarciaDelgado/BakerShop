@@ -1,0 +1,3 @@
+git add .
+git commit -m "Cambio de contacts a NewProduct, solucionados numerosos warning y inicio formulario NewProduct"
+git push

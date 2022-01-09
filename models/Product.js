@@ -18,7 +18,9 @@ const ProductSchema = new Schema(
     "salt": Number,
     "description": String,
     "price": Number,
-    "sold": Number
+    "sold": Number,
+    "origin": String,
+    "user": String
   }
 );
 

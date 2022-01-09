@@ -25,9 +25,11 @@ function Products(props) {
         <h1>{props.type}</h1>
         <Row>
           {allProducts.map((product) => (
-            <Col sm>
+            <Col sm key = {product._id}>
+              
               {" "}
               <CardComponent
+                key = {product._id}
                 id = {product._id}
                 image= {product.image}
                 title= {product.name}

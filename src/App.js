@@ -6,7 +6,7 @@ import Register from "./Register";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "./App.css";
 import Products from "./Products";
-import Contacts from "./Contacts";
+import NewProduct from "./NewProduct";
 import Account from "./Account";
 
 
@@ -29,7 +29,7 @@ function App() {
         {/* Si el usuario esta loggeado voy a Home sino Login */}
         <Route path="/Login" element={user ? <Home /> : <Login />} />
         <Route path="/Register" element={user ? <Home /> : <Register />} />
-        <Route path="/Contacts" element={user ? <Contacts /> : <Login />} />
+        <Route path="/NewProduct" element={user ? <NewProduct /> : <Login />} />
         <Route path="/Account" element={user ? <Account /> : <Login />} />
         <Route path="/Products/salt" element={user ? <Products key="salt" type="salt" /> : <Login />} />
         <Route path="/Products/flour" element={user ? <Products key="flour" type="flour" /> : <Login />} />

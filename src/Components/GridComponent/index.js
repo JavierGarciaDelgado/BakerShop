@@ -18,11 +18,11 @@ function GridComponent() {
   }, []);
 
   return (
-    <div className="mt-4">
+    <div >
       <Container>
         <Row>
           {allProducts.map((product) => (
-            <Col sm>
+            <Col sm key = {product._id} className="mt-4">
               {" "}
               <CardComponent
                 id = {product._id}

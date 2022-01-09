@@ -5,8 +5,8 @@ function CardComponent(props) {
   return (
     <div>
       <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={props.image} />
-        <Card.Body>
+        <Card.Img style={{height: "300px"}} variant="top" src={props.image} />
+        <Card.Body style={{height: "160px"}}>
           <Card.Title>{props.title}</Card.Title>
           <Card.Text>
             {props.text}

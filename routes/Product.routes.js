@@ -18,6 +18,13 @@ router.get("/:id", async (req, res) => {
   res.json(product);
 });
 
+//GET BY USER
+router.get("/user/:user", async (req, res) => {
+  const product = await ProductSchema.find({user: req.params.user});
+  console.log(product);
+  res.json(product);
+});
+
 //GET BY TYPE
 router.get("/type/:type", async (req, res) => {
   const product = await ProductSchema.find({type: req.params.type});
@@ -55,7 +62,9 @@ router.post("/", async (req,res) => {
     salt: req.body.salt,
     description: req.body.description,
     price: req.body.price,
-    sold: req.body.sold
+    sold: req.body.sold,
+    origin: req.body.origin,
+    user: req.body.user
 	})
 	await product.save()
   res.send(product)
