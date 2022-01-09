@@ -1,3 +1,9 @@
+cd ..
+cd ..
+cd ..
+cd d
+cd repos
+cd bakershop2.0
 git add .
 git commit -m "Cambio de contacts a NewProduct, solucionados numerosos warning y inicio formulario NewProduct"
 git push

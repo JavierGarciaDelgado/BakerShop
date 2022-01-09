@@ -34,12 +34,26 @@ const Header = () => {
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to="/NewProduct">
-              NewProduct <i class="bi bi-plus-lg"></i>
+              NewProduct <i className="bi bi-plus-lg"></i>
             </Nav.Link>
-            <Nav.Link as={Link} to="/Account">
-              Account
-            </Nav.Link>
-            <Nav.Link style = {{color:"red"}} onClick={log_out}><i className="bi bi-box-arrow-left icon"></i>Log out</Nav.Link>
+            <NavDropdown
+              title="Foto de la cuenta"
+              id="basic-nav-dropdown"
+              className="position-absolute end-0"
+            >
+              <NavDropdown.Item as={Link} to="/Account">
+                Account
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/MyProducts">
+                MyProducts
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/MyOrders">
+                MyOrders
+              </NavDropdown.Item>
+              <NavDropdown.Item style={{ color: "red" }} onClick={log_out}>
+                <i className="bi bi-box-arrow-left icon"></i>Log out
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>
