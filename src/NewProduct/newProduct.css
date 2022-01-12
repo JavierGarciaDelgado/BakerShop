@@ -1,0 +1,11 @@
+.uploadDiv{
+    border: 5px dashed #1c6ea4;
+    height: 200px;
+    width:200px;
+    text-align: center;
+    padding-top: 30px;
+}
+.iconUpload{
+    font-size: 80px;
+    color: #1c6ea4;
+}

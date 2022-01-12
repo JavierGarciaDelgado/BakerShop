@@ -39,7 +39,7 @@ const Header = () => {
             <NavDropdown
               title="Foto de la cuenta"
               id="basic-nav-dropdown"
-              className="position-absolute end-0"
+              className="userInfo"
             >
               <NavDropdown.Item as={Link} to="/Account">
                 Account

@@ -5,3 +5,7 @@
 .icon{
     margin-right: 5px;
 }
+.userInfo{
+    position:absolute;
+    right:20px;
+}
