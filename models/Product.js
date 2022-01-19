@@ -19,6 +19,7 @@ const ProductSchema = new Schema(
     "description": String,
     "price": Number,
     "sold": Number,
+    "calification": Number,
     "origin": String,
     "user": String
   }

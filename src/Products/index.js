@@ -35,6 +35,7 @@ function Products(props) {
                 title= {product.name}
                 text= {product.weight}
                 price= {product.price}
+                calification= {product.calification}
               />
             </Col>
           ))}

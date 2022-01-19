@@ -7,7 +7,7 @@ function GridComponent() {
   const [allProducts, setAllProducts] = useState([]);
 
   const getProducts = () => {
-    axios.get("http://localhost:5000/api/Product").then((res) => {
+    axios.get("http://localhost:5000/api/Product/sold/sold").then((res) => {
       const products = res.data;
       setAllProducts(products);
     });

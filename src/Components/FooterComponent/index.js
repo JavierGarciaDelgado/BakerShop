@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Form, Row } from "react-bootstrap";
 
 const Footer = () => (
-  <footer className="page-footer font-small blue pt-4">
+  <footer className="page-footer font-small blue pt-5 mt-5">
     <div className="container-fluid text-center">
       <div className="row">
         <div className="col-md-6 mt-md-0">

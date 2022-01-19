@@ -1,0 +1,23 @@
+.primaryButton{
+    background-color: #FED480;
+    border-color: #FED480;
+    color: black;
+    padding: 0.7em;
+    border-radius: 50px;
+    box-shadow: 5px 5px 15px -10px #000000;
+    width: 100%;
+}
+.secondaryButton{
+    background-color: #FF7530;
+    border-color: #FF7530;
+    color:black;
+    padding: 0.7em;
+    border-radius: 50px;
+    box-shadow: 5px 5px 15px -10px #000000;
+    width: 100%;
+
+}
+
+#root{
+    padding-bottom: 5em;
+}

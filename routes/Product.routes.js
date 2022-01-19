@@ -32,6 +32,13 @@ router.get("/type/:type", async (req, res) => {
   res.json(product);
 });
 
+//GET BY SOLD
+router.get("/sold/sold", async (req, res) => {
+  const product = await ProductSchema.find().sort({sold: -1}).limit(4);
+  console.log(product);
+  res.json(product);
+});
+
 //DELETE PRODUCT
 
 router.delete("/:id", async (req, res) => {
@@ -63,6 +70,7 @@ router.post("/", async (req,res) => {
     description: req.body.description,
     price: req.body.price,
     sold: req.body.sold,
+    calification: req.body.calification,
     origin: req.body.origin,
     user: req.body.user
 	})
