@@ -17,6 +17,8 @@ function Product(props) {
     axios.get(`http://localhost:5000/api/Product/${id}`).then((res) => {
       const product = res.data;
       setAllProduct(product);
+      console.log("hola");
+      console.log(allProduct);
     });
   };
 
@@ -33,7 +35,7 @@ function Product(props) {
 
   useEffect(() => {
     getProductByID();
-  }, []);
+  }, [id]);
   useEffect(() => {
     getProductsByType();
   }, [allProduct]);
@@ -94,29 +96,8 @@ function Product(props) {
         </Row>
         <hr />
         <Row>
-          <h2>Productos relacionados:</h2>
-          {allProductByType.map((product) => {
-            return product._id != id ? (
-              <Col sm key={product._id}>
-                <CardComponent
-                  key={product._id}
-                  id={product._id}
-                  image={product.image}
-                  title={product.name}
-                  text={product.weight}
-                  price={product.price}
-                  calification={product.calification}
-                />
-              </Col>
-            ) : (
-              <></>
-            );
-          })}
-        </Row>
-        <hr />
-        <Row>   
           <Col>
-          <small>Details of the product</small>
+            <small>Details of the product</small>
             <Table striped bordered hover size="sm">
               <tbody>
                 <tr>
@@ -142,42 +123,94 @@ function Product(props) {
             <small>Nutritional Values </small>
             <Table striped bordered hover size="sm">
               <tbody>
-                <tr>
-                  <th>Energetic Value</th>
-                  <td>{allProduct.energeticValue}</td>
-                </tr>
-                <tr>
-                  <th>Fat</th>
-                  <td>{allProduct.fat}</td>
-                </tr>
-                <tr>
-                  <th>Satured Fat</th>
-                  <td>{allProduct.saturedFats}</td>
-                </tr>
-                <tr>
-                  <th>Carbohydrates</th>
-                  <td>{allProduct.carbohydrates}</td>
-                </tr>
-                <tr>
-                  <th>Sugars</th>
-                  <td>{allProduct.sugars}</td>
-                </tr>
-                <tr>
-                  <th>Dietary Fiber</th>
-                  <td>{allProduct.dietaryFiber}</td>
-                </tr>
-                <tr>
-                  <th>Protein</th>
-                  <td>{allProduct.protein}</td>
-                </tr>
-                <tr>
-                  <th>Salt</th>
-                  <td>{allProduct.salt}</td>
-                </tr>
-                
+                {allProduct.energeticValue !== "" ? (
+                  <tr>
+                    <th>Energetic Value</th>
+                    <td>{allProduct.energeticValue}</td>
+                  </tr>
+                ) : (
+                  <></>
+                )}
+                {allProduct.fat !== "" ? (
+                  <tr>
+                    <th>Fat</th>
+                    <td>{allProduct.fat}</td>
+                  </tr>
+                ) : (
+                  <></>
+                )}
+                {allProduct.saturedFats !== "" ? (
+                  <tr>
+                    <th>Satured Fat</th>
+                    <td>{allProduct.saturedFats}</td>
+                  </tr>
+                ) : (
+                  <></>
+                )}
+                {allProduct.carbohydrates !== "" ? (
+                  <tr>
+                    <th>Carbohydrates</th>
+                    <td>{allProduct.carbohydrates}</td>
+                  </tr>
+                ) : (
+                  <></>
+                )}
+                {allProduct.sugars !== "" ? (
+                  <tr>
+                    <th>Sugars</th>
+                    <td>{allProduct.sugars}</td>
+                  </tr>
+                ) : (
+                  <></>
+                )}
+                {allProduct.dietaryFiber !== "" ? (
+                  <tr>
+                    <th>Dietary Fiber</th>
+                    <td>{allProduct.dietaryFiber}</td>
+                  </tr>
+                ) : (
+                  <></>
+                )}
+                {allProduct.protein !== "" ? (
+                  <tr>
+                    <th>Protein</th>
+                    <td>{allProduct.protein}</td>
+                  </tr>
+                ) : (
+                  <></>
+                )}
+                {allProduct.salt !== "" ? (
+                  <tr>
+                    <th>Salt</th>
+                    <td>{allProduct.salt}</td>
+                  </tr>
+                ) : (
+                  <></>
+                )}
               </tbody>
             </Table>
           </Col>
+        </Row>
+        <hr />
+        <Row>
+          <h2>Productos relacionados:</h2>
+          {allProductByType.map((product) => {
+            return product._id !== id ? (
+              <Col sm key={product._id}>
+                <CardComponent
+                  key={product._id}
+                  id={product._id}
+                  image={product.image}
+                  title={product.name}
+                  text={product.weight}
+                  price={product.price}
+                  calification={product.calification}
+                />
+              </Col>
+            ) : (
+              <></>
+            );
+          })}
         </Row>
       </Container>
     </div>

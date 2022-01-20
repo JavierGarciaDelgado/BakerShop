@@ -52,7 +52,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 //CREATE POST
-router.post("/", async (req,res) => {
+router.post("/newProduct", async (req,res) => {
   const product = new ProductSchema({
     type: req.body.type,
     name: req.body.name,

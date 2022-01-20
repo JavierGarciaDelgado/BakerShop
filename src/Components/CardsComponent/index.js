@@ -1,6 +1,6 @@
-import React from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
 
 function CardComponent(props) {
   const calculateCalification = () => {
@@ -15,6 +15,7 @@ function CardComponent(props) {
     console.log(stars);
     return <>{stars}</>;
   };
+  
   return (
     <div>
       <Card style={{ width: "18rem" }}>
