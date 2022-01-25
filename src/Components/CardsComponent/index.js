@@ -1,6 +1,7 @@
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import React, { useEffect } from "react";
+import React from "react";
+import "./cardsComponent.css"
 
 function CardComponent(props) {
   const calculateCalification = () => {
@@ -18,7 +19,7 @@ function CardComponent(props) {
   
   return (
     <div>
-      <Card style={{ width: "18rem" }}>
+      <Card style={{ width: "18rem" }} className="cardStyling">
         <Card.Img style={{ height: "300px" }} variant="top" src={props.image} />
         <Card.Body className="mb-2">
           <Card.Title>{props.title}</Card.Title>

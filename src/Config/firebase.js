@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
 import {
   getAuth,
   GoogleAuthProvider,
@@ -19,6 +20,7 @@ const firebaseConfig = {
 }; //configuración de nuestro firebase
 
 const app = initializeApp(firebaseConfig); //llamamos a la funcion para hacer el start del firebase
+const storage = getStorage(app);
 
 const GoogleProvider = new GoogleAuthProvider(); //creamos un proveedor que nos permite registrarnos
 
@@ -50,3 +52,12 @@ export const getUserId = () => {
 export const logout = () => {
   signOut(auth);
 };
+
+//STORAGE
+
+export const uploadImage = (file) => {
+  console.log(file.name)
+  const refer = ref(storage,`img/${file.name}`)
+  const result = uploadBytesResumable(refer,file)
+  return result
+}

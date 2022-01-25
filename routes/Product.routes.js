@@ -39,6 +39,14 @@ router.get("/sold/sold", async (req, res) => {
   res.json(product);
 });
 
+//GET BY DATE
+router.get("/lastAdded/lastAdded", async(req,res) => {
+  const product = await ProductSchema.find().sort({dateOfUpload: -1}).limit(4);
+  console.log(product);
+  res.json(product);
+})
+
+
 //DELETE PRODUCT
 
 router.delete("/:id", async (req, res) => {
@@ -72,7 +80,8 @@ router.post("/newProduct", async (req,res) => {
     sold: req.body.sold,
     calification: req.body.calification,
     origin: req.body.origin,
-    user: req.body.user
+    user: req.body.user,
+    dateOfUpload: req.body.dateOfUpload
 	})
 	await product.save()
   res.send(product)

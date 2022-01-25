@@ -21,7 +21,8 @@ const ProductSchema = new Schema(
     "sold": Number,
     "calification": Number,
     "origin": String,
-    "user": String
+    "user": String,
+    "dateOfUpload": String
   }
 );
 

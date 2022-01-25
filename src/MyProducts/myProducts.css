@@ -1,0 +1,6 @@
+.DeleteButton{
+    position:relative;
+    left: 250px;
+    top: 40px;
+    z-index: 100;
+}

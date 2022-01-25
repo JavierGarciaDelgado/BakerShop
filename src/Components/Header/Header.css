@@ -9,3 +9,8 @@
     position:absolute;
     right:20px;
 }
+
+.headerColor{
+    background-color: #fae0c7;
+    box-shadow: 5px 5px 15px -13px #000000; 
+}

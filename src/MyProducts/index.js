@@ -2,41 +2,62 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import CardComponent from "../Components/CardsComponent";
 import axios from "axios";
-import Header from "../Components/Header"
+import Header from "../Components/Header";
 import { getUserId } from "../Config/firebase";
+import CloseButton from "react-bootstrap/CloseButton";
+import "./myProducts.css";
 
-function MyProducts(props) {
+function MyProducts() {
   const [allProducts, setAllProducts] = useState([]);
+  const [useDelete, setUseDelete] = useState(1);
   const userId = getUserId();
 
   const getProducts = () => {
-    axios.get(`http://localhost:5000/api/Product/user/${userId}`).then((res) => {
-      const products = res.data;
-      setAllProducts(products);
-    });
+    axios
+      .get(`http://localhost:5000/api/Product/user/${userId}`)
+      .then((res) => {
+        const products = res.data;
+        setAllProducts(products);
+      });
+  };
+
+  const deleteProducts = (id) => {
+    if (window.confirm("Do you really want to delete?")) {
+      console.log(id);
+      axios.delete(`http://localhost:5000/api/Product/${id}`);
+      setUseDelete(useDelete + 1);
+    }
   };
 
   useEffect(() => {
     getProducts();
+  }, [useDelete]);
+
+  useEffect(() => {
+    getProducts();
   }, []);
-  
+
   return (
     <div>
-      <Header/>
+      <Header />
       <Container>
         <h1>My Products</h1>
         <Row>
           {allProducts.map((product) => (
-            <Col sm key = {product._id}>
-              
-              {" "}
+            <Col sm key={product._id}>
+              {console.log(allProducts.id)}
+              <CloseButton
+                value={product._id}
+                onClick={(e) => deleteProducts(e.target.value)}
+                className="DeleteButton"
+              />
               <CardComponent
-                key = {product._id}
-                id = {product._id}
-                image= {product.image}
-                title= {product.name}
-                text= {product.weight}
-                price= {product.price}
+                key={product._id}
+                id={product._id}
+                image={product.image}
+                title={product.name}
+                text={product.weight}
+                price={product.price}
               />
             </Col>
           ))}

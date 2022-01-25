@@ -9,7 +9,7 @@ const Header = () => {
     logout();
   };
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar className="headerColor" expand="lg">
       <Container>
         <Navbar.Brand>
           <Nav.Link as={Link} to="/">
