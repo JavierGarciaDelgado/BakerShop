@@ -89,17 +89,63 @@ router.post("/newProduct", async (req,res) => {
 
 //UPDATE PRODUCT
 
-router.patch("/:id", async (req, res) => {
+router.patch("newProduct/:id", async (req, res) => {
 	try {
 		const product = await ProductSchema.findOne({ _id: req.params.id })
 
-		if (req.body.title) {
-			product.title = req.body.title
+		if (req.body.name) {
+			product.name = req.body.name
+		}
+		if (req.body.type) {
+			product.type = req.body.type
+		}
+    if (req.body.weight) {
+			product.weight = req.body.weight
+		}
+    if (req.body.brand) {
+			product.brand = req.body.brand
+		}
+    if (req.body.image) {
+			product.image = req.body.image
+		}
+    if (req.body.energeticValue) {
+			product.energeticValue = req.body.energeticValue
+		}
+    if (req.body.fat) {
+			product.fat = req.body.fat
+		}
+    if (req.body.saturedFats) {
+			product.saturedFats = req.body.saturedFats
+		}
+    if (req.body.carbohydrates) {
+			product.carbohydrates = req.body.carbohydrates
+		}
+    if (req.body.sugars) {
+			product.sugars = req.body.sugars
+		}
+    if (req.body.dietaryFiber) {
+			product.dietaryFiber = req.body.dietaryFiber
+		}
+    if (req.body.protein) {
+			product.protein = req.body.protein
+		}
+    if (req.body.salt) {
+			product.salt = req.body.salt
+		}
+    if (req.body.description) {
+			product.description = req.body.description
+		}
+    if (req.body.price) {
+			product.price = req.body.price
+		}
+    if (req.body.origin) {
+			product.origin = req.body.origin
+		}
+    if (req.body.dateOfUpload) {
+			product.dateOfUpload = req.body.dateOfUpload
 		}
 
-		if (req.body.content) {
-			product.content = req.body.content
-		}
+
 
 		await product.save()
 		res.send(product)

@@ -7,10 +7,20 @@
 }
 .userInfo{
     position:absolute;
-    right:20px;
+    right:1em;
+}
+.cartShopping{
+    position:absolute;
+    right:11em;
 }
 
 .headerColor{
     background-color: #fae0c7;
     box-shadow: 5px 5px 15px -13px #000000; 
 }
+
+.offCanvas{
+    position: fixed;
+    right: 0px;
+}
+

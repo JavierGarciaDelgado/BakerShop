@@ -19,8 +19,9 @@ const firebaseConfig = {
   appId: "1:1090666224208:web:d91023b1fae8d5b72b8f55",
 }; //configuración de nuestro firebase
 
-const app = initializeApp(firebaseConfig); //llamamos a la funcion para hacer el start del firebase
+export const app = initializeApp(firebaseConfig); //llamamos a la funcion para hacer el start del firebase
 const storage = getStorage(app);
+
 
 const GoogleProvider = new GoogleAuthProvider(); //creamos un proveedor que nos permite registrarnos
 

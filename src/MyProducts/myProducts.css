@@ -1,6 +1,23 @@
 .DeleteButton{
     position:relative;
-    left: 250px;
-    top: 40px;
+    left: 210px;
+    top: 50px;
     z-index: 100;
+}
+.EditButton{
+    position:relative;
+    top:50px;
+    left:15px;
+    z-index: 100;
+    font-size: 1em;
+    background-color: #FED480;
+    border-color: #FED480;
+    color: black;
+    box-shadow: 5px 5px 15px -12px #000000;
+}
+
+.EditButton:hover{
+    background-color: #ffc34d;
+    border-color: #ffc34d;
+    color: black;
 }

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import CardComponent from "../Components/CardsComponent";
 import axios from "axios";
 import Header from "../Components/Header";
 import { getUserId } from "../Config/firebase";
 import CloseButton from "react-bootstrap/CloseButton";
+import { Link } from "react-router-dom";
 import "./myProducts.css";
 
 function MyProducts() {
@@ -46,6 +47,7 @@ function MyProducts() {
           {allProducts.map((product) => (
             <Col sm key={product._id}>
               {console.log(allProducts.id)}
+              <Button as={Link} to={`/NewProduct/${product._id}`} className="EditButton"><i class="bi bi-pencil-square"></i></Button>
               <CloseButton
                 value={product._id}
                 onClick={(e) => deleteProducts(e.target.value)}

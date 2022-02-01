@@ -9,8 +9,8 @@ import Products from "./Products";
 import NewProduct from "./NewProduct";
 import Account from "./Account";
 import MyProducts from "./MyProducts";
-import MyOrders from "./MyOrders"
 import Product from "./Product";
+import ProductDemand from "./ProductDemand";
 
 
 function App() {
@@ -33,9 +33,10 @@ function App() {
         <Route path="/Login" element={user ? <Home /> : <Login />} />
         <Route path="/Register" element={user ? <Home /> : <Register />} />
         <Route path="/NewProduct" element={user ? <NewProduct /> : <Login />} />
+        <Route path="/NewProduct/:id" element={user ? <NewProduct /> : <Login />} />
         <Route path="/Account" element={user ? <Account /> : <Login />} />
         <Route path="/MyProducts" element={user ? <MyProducts /> : <Login />} />
-        <Route path="/MyOrders" element={user ? <MyOrders /> : <Login />} />
+        <Route path="/ProductDemand" element={user ? <ProductDemand /> : <Login />} />
         <Route path="/Product/:id" element={user ? <Product /> : <Login />} />
         <Route path="/Products/salt" element={user ? <Products key="salt" type="salt" /> : <Login />} />
         <Route path="/Products/flour" element={user ? <Products key="flour" type="flour" /> : <Login />} />

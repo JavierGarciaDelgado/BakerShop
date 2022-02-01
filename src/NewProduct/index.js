@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Components/Header";
 import { Button, Form, Row, Col } from "react-bootstrap";
 import "./newProduct.css";
 import { getUserId, uploadImage } from "../Config/firebase";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function Contacts() {
   const [allValues, setAllValues] = useState({
@@ -26,15 +27,51 @@ function Contacts() {
     calification: 0,
     origin: "",
     user: getUserId(),
-    dateOfUpload: ""
+    dateOfUpload: "",
   });
-
+  const { id } = useParams();
   const current = new Date();
-  allValues.dateOfUpload = `${current.getDate()}-${current.getMonth()+1}-${current.getFullYear()}  ${current.getHours()}:${current.getMinutes()}`;
-  console.log(allValues);
+  allValues.dateOfUpload = `${current.getDate()}-${
+    current.getMonth() + 1
+  }-${current.getFullYear()}  ${current.getHours()}:${current.getMinutes()}`;
+
   const selectFile = () => {
     document.getElementById("file").click();
   };
+
+  const getProductByID = () => {
+    console.log(id);
+    axios.get(`http://localhost:5000/api/Product/${id}`).then((res) => {
+      const product = res.data;
+      setAllValues(() => {
+        return {
+          ["type"]: product.type,
+          ["name"]: product.name,
+          ["weight"]: product.weight,
+          ["brand"]: product.brand,
+          ["energeticValue"]: product.energeticValue,
+          ["fat"]: product.fat,
+          ["saturedFats"]: product.saturedFats,
+          ["carbohydrates"]: product.carbohydrates,
+          ["sugars"]: product.sugars,
+          ["dietaryFiber"]: product.dietaryFiber,
+          ["protein"]: product.protein,
+          ["salt"]: product.salt,
+          ["description"]: product.description,
+          ["price"]: product.price,
+          ["origin"]: product.origin,
+        };
+      });
+      console.log("hola");
+      console.log(allValues);
+    });
+  };
+
+  useEffect(() => {
+    if (id) {
+      getProductByID();
+    }
+  }, [id]);
 
   const changeHandler = (e) => {
     setAllValues((prevValues) => {
@@ -58,7 +95,7 @@ function Contacts() {
       allValues.protein == "" ||
       allValues.salt == "" ||
       allValues.description == "" ||
-      */allValues.price == 999 ||
+      */ allValues.price == 999 ||
       allValues.price == 0 ||
       allValues.origin == ""
     ) {
@@ -71,32 +108,34 @@ function Contacts() {
   };
   const submitForm = (e) => {
     e.preventDefault();
-    const file = document.getElementById("file").files[0]
-    const fileReader = 0; 
-    if(file){
+    //const file = document.getElementById("file").files[0]
+    //const fileReader = 0;
+    /*if(file){
       uploadImage(fileReader);
-    }
-    const imageFile = uploadImage(fileReader);
-    setAllValues((prevValues) => {
+    }*/
+    //const imageFile = uploadImage(fileReader);
+    /*setAllValues((prevValues) => {
       return { ...prevValues, "image": imageFile };
-    });
-    axios.post(
-      `http://localhost:5000/api/Product/newProduct`,
-      allValues
-    );
+    });*/
+    if (id) {
+      axios.put(`http://localhost:5000/api/Product/newProduct/${id}`,allValues.description)
+      alert("Product updated")
+    } else {
+      axios.post(`http://localhost:5000/api/Product/newProduct`, allValues);
+      alert("Product posted");
+    }
   };
 
   const uploadFileImage = (e) => {
-    const file = document.getElementById("file").files[0]
-    const fileReader = new FileReader()
-    fileReader.readAsDataURL(file)
+    const file = document.getElementById("file").files[0];
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
     fileReader.addEventListener("load", (e) => {
       document.getElementById(
         "image"
       ).innerHTML = `<img class="uploadPreview" src='${e.target.result}'/>`;
-    })
-    
-  }
+    });
+  };
 
   return (
     <div>
@@ -104,14 +143,15 @@ function Contacts() {
       <div className="container">
         <Form encType="multipart/form-data">
           <Form.Label className="mt-5">
-            <h1>NEW PRODUCT</h1>
+            {id ? <h1>UPDATE PRODUCT</h1> : <h1>NEW PRODUCT</h1>}
           </Form.Label>
 
           <Col xs="auto">
             <Form.Group className="mb-3">
               <div id="image" onClick={selectFile} className="uploadDiv">
-                <div className="mt-4"><i className="bi bi-cloud-arrow-up iconUpload"></i></div>
-                
+                <div className="mt-4">
+                  <i className="bi bi-cloud-arrow-up iconUpload"></i>
+                </div>
               </div>
               <Form.Control
                 id="file"
@@ -122,7 +162,6 @@ function Contacts() {
                 name="image"
                 onChange={(e) => {
                   uploadFileImage(e);
-                  
                 }}
               />
               <Form.Text className="text-muted">
@@ -157,6 +196,7 @@ function Contacts() {
             <Col xs="auto">
               <Form.Select
                 name="type"
+                value={allValues.type}
                 onChange={(e) => changeHandler(e)}
                 aria-label="Default select example"
                 required

@@ -30,7 +30,9 @@ function GridComponent() {
 
   return (
     <div >
-      <Container>
+      <Container className="mt-3">
+        <h3>Top sold products</h3>
+        <hr/>
         <Row>
           {allProducts.map((product) => (
             <Col sm key = {product._id} className="mt-4">
@@ -45,7 +47,8 @@ function GridComponent() {
             </Col>
           ))}
         </Row>
-        Ultimos Productos
+        <h3>Last added products</h3>
+        <hr/>
         <Row>
           {lastProducts.map((product) => (
             <Col sm key = {product._id} className="mt-4">

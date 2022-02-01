@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="col-md-6 mt-md-0">
             <h4>ABOUT US</h4>
             <ApiGoogle
-              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDScUAQg4ckGa_BLKGpAaY_663o64u_o-s"
+              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCORr742vl84ftpy4h5iOB9PhACuqp1oX0"
               loadingElement={<div style={{ height: "100%" }} />}
               containerElement={<div style={{ height: "400px" }} />}
               mapElement={<div style={{ height: "100%" }} />}

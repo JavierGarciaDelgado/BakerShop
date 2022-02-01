@@ -7,7 +7,7 @@ import "./product.css";
 import CardComponent from "../Components/CardsComponent";
 import Table from "react-bootstrap/Table";
 
-function Product(props) {
+function Product() {
   const [allProduct, setAllProduct] = useState("");
   const [allProductByType, setAllProductsByType] = useState([]);
   const { id } = useParams();
