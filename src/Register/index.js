@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './register.css';
 import { Link } from "react-router-dom";
-import {CreateWithEmail} from '../Config/firebase'
+import {CreateWithEmail, getUserId} from '../Config/firebase'
 
 function Register() {
     

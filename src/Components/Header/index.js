@@ -1,21 +1,37 @@
-import React,{useState} from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../../Config/firebase";
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import Offcanvas from 'react-bootstrap/Offcanvas'
-import Badge from 'react-bootstrap/Badge'
+import { Navbar, Container, Nav, NavDropdown, Col, Button, Row } from "react-bootstrap";
+import Offcanvas from "react-bootstrap/Offcanvas";
+import Badge from "react-bootstrap/Badge";
 import "./Header.css";
+import CartCardComponent from "../CartCardsComponent";
 
 const Header = ({ name, ...props }) => {
   const [show, setShow] = useState(false);
+  const [useDelete, setUseDelete] = useState(1);
+  let totalPrice = 0;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const keys = Object.keys(localStorage);
+
+  const deleteProducts = (name) => {
+    if (window.confirm("Do you really want to delete?")) {
+      localStorage.removeItem(name)
+      setUseDelete(useDelete + 1);
+    }
+    
+  };
 
   const log_out = (e) => {
     e.preventDefault();
     logout();
   };
+
+  useEffect(() => {
+  }, [useDelete]);
   return (
     <Navbar className="headerColor" expand="lg">
       <Container>
@@ -45,19 +61,48 @@ const Header = ({ name, ...props }) => {
               NewProduct <i className="bi bi-plus-lg"></i>
             </Nav.Link>
             <Nav.Link as={Link} to="/ProductDemand">
-            ProductDemand 
+              ProductDemand
             </Nav.Link>
-
             <Nav.Link className="cartShopping" onClick={handleShow}>
-            <i class="bi bi-cart3"></i><Badge bg="dark">9</Badge>
+              <i class="bi bi-cart3"></i>
+              <Badge bg="dark">9</Badge>
             </Nav.Link>
-            <Offcanvas placement="end" scroll="true" enforceFocus="false" show={show} onHide={handleClose}>
+            <Offcanvas
+              placement="end"
+              scroll="true"
+              enforceFocus="false"
+              show={show}
+              onHide={handleClose}
+            >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>My shopping cart</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                Some text as placeholder. In real life you can have the elements
-                you have chosen. Like, text, images, lists, etc.
+                {keys.map(function (key) {
+                  let item = JSON.parse(localStorage.getItem(key));
+                  {totalPrice=totalPrice+(item.price*item.amount)}
+                  return (
+                    <Col sm key={item._id} className="mt-4">
+                      {" "}
+                      <Button
+                        name={item.name}
+                        onClick={(e) => deleteProducts(e.target.name)}
+                        className="DeleteButtonCart"
+                      ><i class="bi bi-trash"></i></Button>
+                      <CartCardComponent
+                        id={item._id}
+                        image={item.image}
+                        title={item.name}
+                        text={item.weight}
+                        price={item.price}
+                        amount={item.amount}
+                      />
+                      
+                    </Col>
+                  );
+                })}
+                <Row><h1>TOTAL</h1><h1 className="FinalPrice">{totalPrice}€</h1></Row>
+                
               </Offcanvas.Body>
             </Offcanvas>
 
@@ -82,6 +127,5 @@ const Header = ({ name, ...props }) => {
     </Navbar>
   );
 };
-
 
 export default Header;

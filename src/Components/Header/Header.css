@@ -24,3 +24,20 @@
     right: 0px;
 }
 
+.DeleteButtonCart{
+    position:relative;
+    left: 325px;
+    top: 50px;
+    z-index: 100;
+    font-size: 1em;
+    background-color: #FED480;
+    border-color: #FED480;
+    color: black;
+    box-shadow: 5px 5px 15px -12px #000000;
+}
+
+.FinalPrice{
+    position: relative;
+    left: 7em;
+    top: -55px;
+}

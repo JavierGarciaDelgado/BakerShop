@@ -13,6 +13,20 @@
     border-color: #ffc34d;
     color: black;
 }
+
+.primaryButton:active{
+    background-color: #ffc34d;
+    border-color: #ffc34d;
+    color: black;
+}
+
+.primaryButton:visited{
+    background-color: #ffc34d;
+    border-color: #ffc34d;
+    color: black;
+}
+
+
 .secondaryButton{
     background-color: #FF7530;
     border-color: #FF7530;
@@ -25,6 +39,18 @@
 }
 
 .secondaryButton:hover{
+    background-color: #ff5d0b;
+    border-color: #ff5d0b;
+    color: black;
+}
+
+.secondaryButton:active{
+    background-color: #ff5d0b;
+    border-color: #ff5d0b;
+    color: black;
+}
+
+.secondaryButton:visited{
     background-color: #ff5d0b;
     border-color: #ff5d0b;
     color: black;

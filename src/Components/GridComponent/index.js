@@ -18,7 +18,6 @@ function GridComponent() {
     axios.get("http://localhost:5000/api/Product/lastAdded/lastAdded").then((res) => {
       const lastProducts = res.data;
       setLastProducts(lastProducts);
-      console.log(lastProducts)
     });
   };
 

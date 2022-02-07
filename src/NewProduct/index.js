@@ -118,7 +118,7 @@ function Contacts() {
       return { ...prevValues, "image": imageFile };
     });*/
     if (id) {
-      axios.put(`http://localhost:5000/api/Product/newProduct/${id}`,allValues.description)
+      axios.put(`http://localhost:5000/api/Product/newProduct/${id}`,allValues)
       alert("Product updated")
     } else {
       axios.post(`http://localhost:5000/api/Product/newProduct`, allValues);

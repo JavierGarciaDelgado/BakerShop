@@ -34,9 +34,6 @@ function MyProducts() {
     getProducts();
   }, [useDelete]);
 
-  useEffect(() => {
-    getProducts();
-  }, []);
 
   return (
     <div>

@@ -33,6 +33,17 @@ function Product() {
       });
   };
 
+  const changeHandler = (e) => {
+    setAllProduct((prevValues) => {
+      return { ...prevValues, [e.target.name]: e.target.value };
+    });
+  };
+
+  const addToCart = () => {
+    localStorage.setItem(allProduct.name, JSON.stringify(allProduct));
+  }
+  
+
   useEffect(() => {
     getProductByID();
   }, [id]);
@@ -78,13 +89,17 @@ function Product() {
               <Row className="mt-3">
                 <small>Cantidad:</small>
                 <Col className="col-2 mt-2">
-                  <Form.Control type="number" min="0" max="10" />
+                  <Form.Control 
+                  value={allProduct.amount}
+                  name="amount"
+                  onChange={(e) => changeHandler(e)}
+                  type="number" min="0" max="10" />
                 </Col>
               </Row>
             </p>
             <Row className="mt-5">
               <Col className="col-4">
-                <Button className="primaryButton">Añadir al carrito</Button>
+                <Button onClick={addToCart} className="primaryButton">Añadir al carrito</Button>
               </Col>
             </Row>
             <Row className="mt-3">

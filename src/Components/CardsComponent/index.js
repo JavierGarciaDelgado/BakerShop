@@ -13,7 +13,6 @@ function CardComponent(props) {
     for (let index = 0; index < 5 - props.calification; index++) {
       stars.push(<i className="bi bi-star"></i>);
     }
-    console.log(stars);
     return <>{stars}</>;
   };
   
