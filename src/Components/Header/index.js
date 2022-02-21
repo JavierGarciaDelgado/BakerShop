@@ -10,6 +10,8 @@ import CartCardComponent from "../CartCardsComponent";
 const Header = ({ name, ...props }) => {
   const [show, setShow] = useState(false);
   const [useDelete, setUseDelete] = useState(1);
+  const [useTotalAmount,setTotalAmount] = useState(0);
+  //const [useTotalPrice,setTotalPrice] = useState(0);
   let totalPrice = 0;
 
   const handleClose = () => setShow(false);
@@ -17,10 +19,30 @@ const Header = ({ name, ...props }) => {
 
   const keys = Object.keys(localStorage);
 
+  /*const totalPrice = () => {
+    let price = 0;
+    keys.map(function (key) {
+      let item = JSON.parse(localStorage.getItem(key));
+      price += parseInt(item.price);
+    });
+    setTotalPrice(price) 
+  }*/
+
+  const totalAmount = () => {
+    let amount = 0;
+    keys.map(function (key) {
+      let item = JSON.parse(localStorage.getItem(key));
+      amount += parseInt(item.amount);
+    });
+    setTotalAmount(amount) 
+  }
+
+
   const deleteProducts = (name) => {
     if (window.confirm("Do you really want to delete?")) {
+      console.log(name)
       localStorage.removeItem(name)
-      setUseDelete(useDelete + 1);
+      setUseDelete(useDelete + 1);      
     }
     
   };
@@ -31,7 +53,8 @@ const Header = ({ name, ...props }) => {
   };
 
   useEffect(() => {
-  }, [useDelete]);
+    totalAmount();
+  }, [useDelete,keys]);
   return (
     <Navbar className="headerColor" expand="lg">
       <Container>
@@ -65,7 +88,7 @@ const Header = ({ name, ...props }) => {
             </Nav.Link>
             <Nav.Link className="cartShopping" onClick={handleShow}>
               <i class="bi bi-cart3"></i>
-              <Badge bg="dark">9</Badge>
+              <Badge bg="dark">{useTotalAmount}</Badge>
             </Nav.Link>
             <Offcanvas
               placement="end"
@@ -74,7 +97,7 @@ const Header = ({ name, ...props }) => {
               show={show}
               onHide={handleClose}
             >
-              <Offcanvas.Header closeButton>
+              <Offcanvas.Header closeButton >
                 <Offcanvas.Title>My shopping cart</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
@@ -86,7 +109,7 @@ const Header = ({ name, ...props }) => {
                       {" "}
                       <Button
                         name={item.name}
-                        onClick={(e) => deleteProducts(e.target.name)}
+                        onClick={(e) => deleteProducts(item.name)}
                         className="DeleteButtonCart"
                       ><i class="bi bi-trash"></i></Button>
                       <CartCardComponent
@@ -101,7 +124,7 @@ const Header = ({ name, ...props }) => {
                     </Col>
                   );
                 })}
-                <Row><h1>TOTAL</h1><h1 className="FinalPrice">{totalPrice}€</h1></Row>
+                <Row><h1>TOTAL</h1><h1 className="FinalPrice">{totalPrice.toFixed(2)}€</h1></Row>
                 
               </Offcanvas.Body>
             </Offcanvas>

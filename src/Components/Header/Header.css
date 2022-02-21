@@ -1,43 +1,65 @@
-.subenlace{
-    text-decoration: none;
-    color: black;
+.subenlace {
+  text-decoration: none;
+  color: black;
 }
-.icon{
-    margin-right: 5px;
+.icon {
+  margin-right: 5px;
 }
-.userInfo{
-    position:absolute;
-    right:1em;
+.userInfo {
+  position: absolute;
+  right: 1em;
 }
-.cartShopping{
-    position:absolute;
-    right:11em;
-}
-
-.headerColor{
-    background-color: #fae0c7;
-    box-shadow: 5px 5px 15px -13px #000000; 
+.cartShopping {
+  position: absolute;
+  right: 11em;
 }
 
-.offCanvas{
-    position: fixed;
-    right: 0px;
+.headerColor {
+  background: rgb(250,224,192);
+  background: linear-gradient(180deg, rgba(250,224,192,1) 0%, rgba(255,222,191,1) 59%, rgba(255,214,175,1) 100%);
+  
 }
 
-.DeleteButtonCart{
-    position:relative;
-    left: 325px;
-    top: 50px;
-    z-index: 100;
-    font-size: 1em;
-    background-color: #FED480;
-    border-color: #FED480;
-    color: black;
-    box-shadow: 5px 5px 15px -12px #000000;
+.offCanvas {
+  position: fixed;
+  right: 0px;
 }
 
-.FinalPrice{
-    position: relative;
-    left: 7em;
-    top: -55px;
+.DeleteButtonCart {
+  position: relative;
+  left: 325px;
+  top: 50px;
+  z-index: 100;
+  font-size: 1em;
+  background-color: #fed480;
+  border-color: #fed480;
+  color: black;
+  box-shadow: 5px 5px 15px -12px #000000;
+}
+.DeleteButtonCart:hover {
+  background-color: #ffc34d;
+  border-color: #ffc34d;
+  color: black;
+  box-shadow: 5px 5px 15px -12px #000000;
+}
+.DeleteButtonCart:visited {
+  background-color: #ffc34d;
+  border-color: #ffc34d;
+  outline: 0px !important;
+  box-shadow: 5px 5px 15px -12px #000000;
+  color: black;
+}
+
+.DeleteButtonCart:focus {
+  background-color: #ffc34d;
+  border-color: #ffc34d;
+  outline: 0px !important;
+  box-shadow: none !important;
+  color: black;
+}
+
+.FinalPrice {
+  position: relative;
+  left: 7em;
+  top: -55px;
 }

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
+import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
 import {
   getAuth,
   GoogleAuthProvider,
@@ -62,3 +62,12 @@ export const uploadImage = (file) => {
   const result = uploadBytesResumable(refer,file)
   return result
 }
+
+export const downloadImage = (image) => {
+  const starsRef = ref(storage, `img/${image}`);
+  console.log(starsRef)
+  const URL = getDownloadURL(starsRef)
+  console.log(URL)
+  return URL
+}
+

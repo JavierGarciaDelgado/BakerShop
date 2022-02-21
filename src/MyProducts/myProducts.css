@@ -21,3 +21,11 @@
     border-color: #ffc34d;
     color: black;
 }
+
+.EditButton:focus{
+    background-color: #ffc34d;
+    border-color: #ffc34d;
+    outline: 0px !important;
+    box-shadow: none !important;
+    color: black;
+}

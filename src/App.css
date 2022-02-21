@@ -1,3 +1,9 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fffafa;
+    height: 100vh;
+}
 .primaryButton{
     background-color: #FED480;
     border-color: #FED480;
@@ -11,18 +17,55 @@
 .primaryButton:hover{
     background-color: #ffc34d;
     border-color: #ffc34d;
+    outline: 0px !important;
+    box-shadow: none;
     color: black;
 }
 
 .primaryButton:active{
     background-color: #ffc34d;
     border-color: #ffc34d;
+    outline: 0px !important;
+    box-shadow: none;
     color: black;
 }
 
 .primaryButton:visited{
     background-color: #ffc34d;
     border-color: #ffc34d;
+    outline: 0px !important;
+    box-shadow: none;
+    color: black;
+}
+
+.primaryButton:focus{
+    background-color: #ffc34d;
+    border-color: #ffc34d;
+    outline: 0px !important;
+    box-shadow: none !important;
+    color: black;
+}
+
+.primaryButton:focus-visible{
+    background-color: #ffc34d;
+    border-color: #ffc34d;
+    outline: 0px !important;
+    box-shadow: none;
+    color: black;
+}
+
+.primaryButton:target{
+    background-color: #ffc34d;
+    border-color: #ffc34d;
+    outline: 0px !important;
+    box-shadow: none;
+    color: black;
+}
+.primaryButton:disabled{
+    background-color: #ffc34d;
+    border-color: #ffc34d;
+    outline: 0px !important;
+    box-shadow: none;
     color: black;
 }
 
@@ -50,8 +93,26 @@
     color: black;
 }
 
+.secondaryButton:active{
+    background-color: #ff5d0b;
+    border-color: #ff5d0b;
+    outline: 0px !important;
+    box-shadow: none;
+    color: black;
+}
+
 .secondaryButton:visited{
     background-color: #ff5d0b;
     border-color: #ff5d0b;
+    outline: 0px !important;
+    box-shadow: none;
+    color: black;
+}
+
+.secondaryButton:focus{
+    background-color: #ff5d0b;
+    border-color: #ff5d0b;
+    outline: 0px !important;
+    box-shadow: none !important;
     color: black;
 }

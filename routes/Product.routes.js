@@ -89,7 +89,7 @@ router.post("/newProduct", async (req,res) => {
 
 //UPDATE PRODUCT
 
-router.patch("newProduct/:id", async (req, res) => {
+router.put("/newProduct/:id", async (req, res) => {
 	try {
 		const product = await ProductSchema.findOne({ _id: req.params.id })
 

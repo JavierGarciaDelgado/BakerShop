@@ -13,17 +13,15 @@ function Product() {
   const { id } = useParams();
 
   const getProductByID = () => {
-    console.log(id);
     axios.get(`http://localhost:5000/api/Product/${id}`).then((res) => {
       const product = res.data;
       setAllProduct(product);
-      console.log("hola");
-      console.log(allProduct);
-    });
+    setAllProduct((prevValues) => {
+      return {...prevValues,"amount":1}});
+  });
   };
 
   const getProductsByType = () => {
-    console.log(allProduct.type);
     axios
 
       .get(`http://localhost:5000/api/Product/type/${allProduct.type}`)
@@ -42,7 +40,6 @@ function Product() {
   const addToCart = () => {
     localStorage.setItem(allProduct.name, JSON.stringify(allProduct));
   }
-  
 
   useEffect(() => {
     getProductByID();
@@ -50,6 +47,7 @@ function Product() {
   useEffect(() => {
     getProductsByType();
   }, [allProduct]);
+
 
   const calculateCalification = () => {
     let stars = [];
@@ -93,7 +91,8 @@ function Product() {
                   value={allProduct.amount}
                   name="amount"
                   onChange={(e) => changeHandler(e)}
-                  type="number" min="0" max="10" />
+                  type="number" min="1" max="10"
+                  defaultValue="1" />
                 </Col>
               </Row>
             </p>

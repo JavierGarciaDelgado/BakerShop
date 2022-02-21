@@ -3,9 +3,10 @@ import Header from "../Components/Header";
 import axios from "axios";
 import { Button, Form, Row, Col } from "react-bootstrap";
 import { getUserId } from "../Config/firebase";
+import "./productDemand.css";
 
 function ProductDemand() {
-  const [allDemands, setAllDemands] = useState([
+  const [allDemands, setAllDemands] = useState(
     {
       type: "",
       weight: "",
@@ -15,9 +16,9 @@ function ProductDemand() {
       user: getUserId(),
       dateOfUpload: "",
     },
-  ]);
+  );
 
-  const getDemands = () => {
+  /*const getDemands = () => {
     axios.get(`http://localhost:5000/api/Demand`).then((res) => {
       const demands = res.data;
       setAllDemands(demands);
@@ -26,7 +27,7 @@ function ProductDemand() {
 
   useEffect(() => {
     getDemands();
-  }, []);
+  }, []);*/
 
   const changeHandler = (e) => {
     setAllDemands((prevValues) => {
@@ -45,8 +46,9 @@ function ProductDemand() {
     /*setAllValues((prevValues) => {
       return { ...prevValues, "image": imageFile };
     });*/
+    console.log(allDemands)
     axios.post(`http://localhost:5000/api/Demand/ProductDemand`, allDemands);
-    alert("Demand posted");
+    alert(allDemands.user);
   };
 
   return (
@@ -108,17 +110,18 @@ function ProductDemand() {
             />
           </Form.Group>
 
-          <Button
+        <Col xs={2}><Button
             onClick={(e) => submitForm(e)}
             variant="primary"
             type="submit"
+            className="primaryButton"
           >
             Submit
-          </Button>
+          </Button></Col>
+          
         </Form>
       </div>
 
-      {allDemands[0].description}
     </div>
   );
 }

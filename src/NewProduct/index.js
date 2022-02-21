@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import Header from "../Components/Header";
 import { Button, Form, Row, Col } from "react-bootstrap";
 import "./newProduct.css";
-import { getUserId, uploadImage } from "../Config/firebase";
+import { downloadImage, getUserId, uploadImage } from "../Config/firebase";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-function Contacts() {
+function NewProduct() {
   const [allValues, setAllValues] = useState({
     type: "",
     name: "",
@@ -29,6 +29,7 @@ function Contacts() {
     user: getUserId(),
     dateOfUpload: "",
   });
+  const [ImageName, setImageName] = useState();
   const { id } = useParams();
   const current = new Date();
   allValues.dateOfUpload = `${current.getDate()}-${
@@ -73,6 +74,10 @@ function Contacts() {
     }
   }, [id]);
 
+  useEffect(() => {
+    console.log(allValues)
+  }, [allValues]);
+
   const changeHandler = (e) => {
     setAllValues((prevValues) => {
       return { ...prevValues, [e.target.name]: e.target.value };
@@ -106,20 +111,20 @@ function Contacts() {
       return false;
     }
   };
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
-    //const file = document.getElementById("file").files[0]
-    //const fileReader = 0;
-    /*if(file){
-      uploadImage(fileReader);
-    }*/
-    //const imageFile = uploadImage(fileReader);
-    /*setAllValues((prevValues) => {
-      return { ...prevValues, "image": imageFile };
-    });*/
+    const imageRef = await downloadImage(ImageName);
+    console.log(imageRef);
+    setAllValues({
+      ...allValues,image:imageRef
+    });
+    setTimeout("",500)
     if (id) {
-      axios.put(`http://localhost:5000/api/Product/newProduct/${id}`,allValues)
-      alert("Product updated")
+      axios.put(
+        `http://localhost:5000/api/Product/newProduct/${id}`,
+        allValues
+      );
+      alert("Product updated");
     } else {
       axios.post(`http://localhost:5000/api/Product/newProduct`, allValues);
       alert("Product posted");
@@ -135,6 +140,10 @@ function Contacts() {
         "image"
       ).innerHTML = `<img class="uploadPreview" src='${e.target.result}'/>`;
     });
+    const result = uploadImage(file);
+    setImageName(result._blob.data_.name);
+
+    console.log(ImageName);
   };
 
   return (
@@ -158,7 +167,6 @@ function Contacts() {
                 type="file"
                 accept="image/*"
                 className="d-none"
-                value={allValues.image}
                 name="image"
                 onChange={(e) => {
                   uploadFileImage(e);
@@ -345,19 +353,21 @@ function Contacts() {
               placeholder="Description"
             />
           </Form.Group>
-
-          <Button
-            onClick={(e) => submitForm(e)}
-            variant="primary"
-            type="submit"
-            disabled={allFit()}
-          >
-            Submit
-          </Button>
+          <Col xs={2}>
+            <Button
+              onClick={(e) => submitForm(e)}
+              variant="primary"
+              type="submit"
+              className="primaryButton"
+              disabled={allFit()}
+            >
+              Submit
+            </Button>
+          </Col>
         </Form>
       </div>
     </div>
   );
 }
 
-export default Contacts;
+export default NewProduct;
