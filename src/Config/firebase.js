@@ -67,7 +67,6 @@ export const downloadImage = (image) => {
   const starsRef = ref(storage, `img/${image}`);
   console.log(starsRef)
   const URL = getDownloadURL(starsRef)
-  console.log(URL)
   return URL
 }
 

@@ -29,7 +29,7 @@ function NewProduct() {
     user: getUserId(),
     dateOfUpload: "",
   });
-  const [ImageName, setImageName] = useState();
+  const [ImageName, setImageName] = useState("");
   const { id } = useParams();
   const current = new Date();
   allValues.dateOfUpload = `${current.getDate()}-${
@@ -113,25 +113,22 @@ function NewProduct() {
   };
   const submitForm = async (e) => {
     e.preventDefault();
-    const imageRef = await downloadImage(ImageName);
-    console.log(imageRef);
-    setAllValues({
-      ...allValues,image:imageRef
-    });
-    setTimeout("",500)
+
     if (id) {
+      console.log("puto",allValues)
       axios.put(
         `http://localhost:5000/api/Product/newProduct/${id}`,
         allValues
       );
       alert("Product updated");
     } else {
+      console.log("puto",allValues)
       axios.post(`http://localhost:5000/api/Product/newProduct`, allValues);
       alert("Product posted");
     }
   };
 
-  const uploadFileImage = (e) => {
+  const uploadFileImage = async (e) => {
     const file = document.getElementById("file").files[0];
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
@@ -142,8 +139,11 @@ function NewProduct() {
     });
     const result = uploadImage(file);
     setImageName(result._blob.data_.name);
-
-    console.log(ImageName);
+    const imageRef = await downloadImage(ImageName);
+    console.log("hola", imageRef);
+    setAllValues({
+      ...allValues,image:imageRef
+    });
   };
 
   return (
