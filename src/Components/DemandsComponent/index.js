@@ -12,7 +12,7 @@ function DemandsComponent(props) {
 {props.description}
 {props.price}
 {props.origin}
-{props.dateOfUpload} {console.log(props.dateOfUpload)}
+{props.dateOfUpload}
     </div>
   );
 }

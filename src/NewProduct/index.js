@@ -30,6 +30,7 @@ function NewProduct() {
     dateOfUpload: "",
   });
   const [ImageName, setImageName] = useState("");
+  const [imgURL, setImgURL] = useState("");
   const { id } = useParams();
   const current = new Date();
   allValues.dateOfUpload = `${current.getDate()}-${
@@ -75,7 +76,7 @@ function NewProduct() {
   }, [id]);
 
   useEffect(() => {
-    console.log(allValues)
+    console.log(allValues);
   }, [allValues]);
 
   const changeHandler = (e) => {
@@ -111,21 +112,30 @@ function NewProduct() {
       return false;
     }
   };
-  const submitForm = async (e) => {
-    e.preventDefault();
 
-    if (id) {
-      console.log("puto",allValues)
-      axios.put(
-        `http://localhost:5000/api/Product/newProduct/${id}`,
-        allValues
-      );
-      alert("Product updated");
-    } else {
-      console.log("puto",allValues)
-      axios.post(`http://localhost:5000/api/Product/newProduct`, allValues);
-      alert("Product posted");
+  useEffect(()=>{
+    if(imgURL){
+      let aux = allValues
+      aux.image = imgURL
+      if (id) {
+        axios.put(
+          `http://localhost:5000/api/Product/newProduct/${id}`,
+          aux
+        );
+        alert("Product updated");
+      } else {
+        axios.post(`http://localhost:5000/api/Product/newProduct`, aux);
+        alert("Product posted");
+      }
     }
+  },[imgURL])
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    downloadImage(ImageName._blob.data_.name).then((result)=>{
+      setImgURL(result)   
+    })
+    
   };
 
   const uploadFileImage = async (e) => {
@@ -137,13 +147,9 @@ function NewProduct() {
         "image"
       ).innerHTML = `<img class="uploadPreview" src='${e.target.result}'/>`;
     });
+
     const result = uploadImage(file);
-    setImageName(result._blob.data_.name);
-    const imageRef = await downloadImage(ImageName);
-    console.log("hola", imageRef);
-    setAllValues({
-      ...allValues,image:imageRef
-    });
+    setImageName(result);
   };
 
   return (

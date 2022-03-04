@@ -1,5 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
 import {
   getAuth,
   GoogleAuthProvider,
@@ -21,7 +26,6 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig); //llamamos a la funcion para hacer el start del firebase
 const storage = getStorage(app);
-
 
 const GoogleProvider = new GoogleAuthProvider(); //creamos un proveedor que nos permite registrarnos
 
@@ -57,16 +61,13 @@ export const logout = () => {
 //STORAGE
 
 export const uploadImage = (file) => {
-  console.log(file.name)
-  const refer = ref(storage,`img/${file.name}`)
-  const result = uploadBytesResumable(refer,file)
+  const refer = ref(storage, `img/${file.name}`);
+  const result = uploadBytesResumable(refer, file);
   return result
-}
+};
 
 export const downloadImage = (image) => {
   const starsRef = ref(storage, `img/${image}`);
-  console.log(starsRef)
-  const URL = getDownloadURL(starsRef)
-  return URL
-}
-
+  const URL = getDownloadURL(starsRef);
+  return URL;
+};
