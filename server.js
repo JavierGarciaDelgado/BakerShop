@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 //Routes
 app.use("/api/Product", require("./routes/Product.routes"));
 app.use("/api/Demand", require("./routes/Demand.routes"));
-app.use("/api/UserInfo", require("./routes/UserInfo.routes"));
+app.use("/api/Comment", require("./routes/Comment.routes"));
 
 // Server connection
 

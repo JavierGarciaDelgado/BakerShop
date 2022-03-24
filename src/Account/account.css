@@ -1,0 +1,18 @@
+.changeEmail{
+    text-decoration: underline dotted black ;
+    font-weight: bold;
+    font-size: 13px;
+    color: black;
+    background-color: #fffafa;
+    border-color: #fffafa;
+}
+.accountSettings{
+    font-size: 22px;
+}
+
+.division {
+    width: 95%;
+    height: 0;
+    border: medium none;
+    border-top: 1px dashed white!important
+  }

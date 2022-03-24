@@ -1,0 +1,77 @@
+.toastPosition{
+    position: relative;
+    left: 26rem;
+}
+.checkPosition{
+    position: relative;
+    left: 64rem;
+}
+.titlePosition{
+    position: relative;
+    text-align: center;
+}
+
+.checkButton{
+    background-color: #ffffff !important;
+    border-color: #ffffff;
+    color: green;
+    padding: 0.7em;
+    border-radius: 50px;
+    font-size: 25px;
+
+}
+
+.checkButton:hover{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0px !important;
+    box-shadow: none;
+    color: green;
+}
+
+.checkButton:active{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0px !important;
+    box-shadow: none;
+    color: green;
+}
+
+.checkButton:visited{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0px !important;
+    box-shadow: none;
+    color: green;
+}
+
+.checkButton:focus{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0px !important;
+    box-shadow: none !important;
+    color: green;
+}
+
+.checkButton:focus-visible{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0px !important;
+    box-shadow: none;
+    color: green;
+}
+
+.checkButton:target{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0px !important;
+    box-shadow: none;
+    color: green;
+}
+.checkButton:disabled{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0px !important;
+    box-shadow: none;
+    color: green;
+}

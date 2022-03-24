@@ -30,11 +30,15 @@ const storage = getStorage(app);
 const GoogleProvider = new GoogleAuthProvider(); //creamos un proveedor que nos permite registrarnos
 
 const auth = getAuth(app); //Nos permite usar todas las funciones de autenticación de firebase
+const user = auth.currentUser;
+
 let uid = "no user";
+let email = "no email"
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
     uid = user.uid;
+    email = user.email
   }
 });
 
@@ -49,6 +53,45 @@ export const CreateWithEmail = (email, password) => {
 export const LoginWithPassword = (email, password) => {
   signInWithEmailAndPassword(auth, email, password);
 }; // logea con el email
+
+export const getUserDisplayName = () => {
+  if (user !== null) {
+    const displayName = user.displayName;
+    return displayName
+  
+  }
+}
+
+export const getUserEmail = () => {
+    return email
+}
+
+export const updateEmail = (email) => {
+  updateEmail(auth.currentUser, email).then(() => {
+    // Email updated!
+    // ...
+  }).catch((error) => {
+    // An error occurred
+    // ...
+  });
+}
+
+export const getUserPhotoURL = () => {
+  if (user !== null) {
+    const photoURL = user.photoURL;
+    return photoURL
+
+  }
+}
+
+export const getUserVerified = () => {
+  if (user !== null) {
+    const emailVerified = user.emailVerified;
+    return emailVerified
+
+  }
+}
+
 
 export const getUserId = () => {
   return uid;
