@@ -47,6 +47,7 @@ router.delete("/:id", async (req, res) => {
 //CREATE POST
 router.post("/ProductDemand", async (req, res) => {
   const demand = new DemandSchema({
+    title: req.body.title,
     type: req.body.type,
     weight: req.body.weight,
     description: req.body.description,

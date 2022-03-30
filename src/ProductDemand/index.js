@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Components/Header";
 import axios from "axios";
-import { Button, Form, Row, Col, CloseButton, Container } from "react-bootstrap";
+import {
+  Button,
+  Form,
+  Row,
+  Col,
+  CloseButton,
+  Container,
+} from "react-bootstrap";
 import { getUserId } from "../Config/firebase";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
@@ -20,6 +27,7 @@ function ProductDemand() {
     origin: "",
     user: getUserId(),
     dateOfUpload: "",
+    title: "",
   });
   const userId = getUserId();
 
@@ -101,6 +109,7 @@ function ProductDemand() {
                   dateOfUpload={demand.dateOfUpload}
                   demandId={demand._id}
                   user={demand.user}
+                  title={demand.title}
                 />
               </Col>
             ))}
@@ -109,7 +118,6 @@ function ProductDemand() {
             {allDemands.map((demand) => (
               <Col sm className="mt-4">
                 {" "}
-                
                 <DemandsComponent
                   type={demand.type}
                   weight={demand.weight}
@@ -127,11 +135,22 @@ function ProductDemand() {
           <Tab eventKey="NewDemand" title="NewDemand">
             <div className="container">
               <Form encType="multipart/form-data">
-                <Form.Label className="mt-5">
-                  <h1>NEW DEMAND</h1>
+                <Form.Label className="mt-3">
+                  <h3>NEW DEMAND</h3>
                 </Form.Label>
 
-                <Col xs="auto">
+                <Col className="mb-3" xs="auto">
+                  <Form.Group className="mb-3">
+                    <Form.Control
+                      value={newDemands.title}
+                      name="title"
+                      onChange={(e) => changeHandler(e)}
+                      placeholder="Title"
+                    />
+                  </Form.Group>
+                </Col>
+
+                <Col className="mb-3" xs="auto">
                   <Form.Select
                     name="type"
                     onChange={(e) => changeHandler(e)}
@@ -164,7 +183,6 @@ function ProductDemand() {
                         name="price"
                         onChange={(e) => changeHandler(e)}
                         placeholder="Price"
-                        required
                       />
                     </Form.Group>
                   </Col>

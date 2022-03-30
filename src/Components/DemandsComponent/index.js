@@ -67,16 +67,14 @@ function DemandsComponent(props) {
       <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header>
-            {props.type}
-            {props.weight}
-            {props.description}
-            {props.price}
-            {props.origin}
-            {props.dateOfUpload}///////////////////////////
-            {props.demandId}///////////////////////
-            {props.user}
+            {props.title}
+            <span className="dateDemand">{props.dateOfUpload}</span>
           </Accordion.Header>
           <Accordion.Body>
+            <p><b>Description of the product:</b> {props.description}</p>
+            <p><b>Type of product: </b>{props.type}</p>
+            <p><b>Origin: </b> {props.origin}</p>
+            <p className="mb-5"><b>Offer:</b>{props.price}/per Kg</p>
             <Form.Group className="mb-3">
               <Form.Control
                 value={newComment.title}

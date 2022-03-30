@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 const DemandSchema = new Schema(
   {
+    "title":String,
     "type": String,
     "weight": String,
     "description": String,
