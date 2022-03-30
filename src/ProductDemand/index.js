@@ -127,6 +127,7 @@ function ProductDemand() {
                   dateOfUpload={demand.dateOfUpload}
                   demandId={demand._id}
                   user={demand.user}
+                  title={demand.title}
                 />
                 <hr />
               </Col>
