@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import CardComponent from "../CardsComponent";
 import axios from "axios";
+import './gridComponent.css'
 
 function GridComponent() {
   const [allProducts, setAllProducts] = useState([]);
@@ -31,7 +32,6 @@ function GridComponent() {
     <div >
       <Container className="mt-3">
         <h3>Top sold products</h3>
-        <hr/>
         <Row>
           {allProducts.map((product) => (
             <Col sm key = {product._id} className="mt-4">
@@ -46,8 +46,8 @@ function GridComponent() {
             </Col>
           ))}
         </Row>
+            
         <h3>Last added products</h3>
-        <hr/>
         <Row>
           {lastProducts.map((product) => (
             <Col sm key = {product._id} className="mt-4">

@@ -15,27 +15,34 @@ function Register() {
       CreateWithEmail(email, password);
     }
   };
+
+
+  const  [confirmPassword, setConfirmPassword] = useState("")
+
   const validatePassword = () => {
     const password = document.getElementById("user-pass").value;
     const cnfrmPassword = document.getElementById("user-repeatpass").value;
     console.log(password, cnfrmPassword);
-    const message = document.getElementById("message");
 
     if (password.length !== 0) {
-      if (password === cnfrmPassword) {
-        message.textContent = "Password match";
-        message.style.backgroundColor = "#00FF00";
-        setValid(true);
-      } else {
-        message.textContent = "Password don't match";
-        message.style.backgroundColor = "#ff4d4d";
+      if (password !== cnfrmPassword) {
+        setConfirmPassword(
+          <p className="match">Password doesn't match</p>
+        )
         setValid(false);
+      }else{
+        setValid(true);
+        setConfirmPassword("")
       }
     } else {
-      alert("Password can't be empty!");
-      message.textContent = "";
+      setConfirmPassword("")
     }
   };
+
+  const handlePassword = (e) => {
+    validatePassword()
+    setPassword(e.target.value)
+  }
 
   return (
     <div className="loginBackGround" id="login">
@@ -90,7 +97,7 @@ function Register() {
                     <label htmlFor="password">Password:</label>
                     <br />
                     <input
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={(e) => handlePassword(e)}
                       type="password"
                       id="user-pass"
                       className="form-control"
@@ -110,9 +117,9 @@ function Register() {
                       required
                     />
                   </div>
-                  <p id="message"></p>
+                  {confirmPassword}
                   <div className="form-group mt-3">
-                    <Col className="mt-5" xs={4}>
+                    <Col className="mt-4" xs={12}>
                       <Button
                         type="submit"
                         className="btn btn-primary btn-block primaryButton"
@@ -121,8 +128,8 @@ function Register() {
                       </Button>
                     </Col>
 
-                    <Col className="mt-5" xs={8}>
-                    Already have account?{" "}
+                    <Col className="mt-4 text-center" xs={12}>
+                      <span>Already have account?</span>
                       <Link to="/" className="LinkRegister">
                         Sign in
                       </Link>

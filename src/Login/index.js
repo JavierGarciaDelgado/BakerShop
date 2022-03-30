@@ -56,7 +56,7 @@ function Login() {
                 </div>
                 <div className="form-group mt-3">
                   <Container>
-                    <Col className="mt-5" xs={4}>
+                    <Col className="mt-4" xs={12}>
                       <input
                         onClick={loginPassword}
                         type="submit"
@@ -65,16 +65,22 @@ function Login() {
                         value="Sign in"
                       />
                     </Col>
-                    Sign in with{" "}
-                    <button
-                      className="justify-content-center mt-5"
-                      onClick={loginGoogle}
-                    >
-                      {" "}
-                      <i class="bi bi-google">oogle</i>
-                    </button>
-                    <Col className="mt-3" xs={8}>
-                      Don't have an account?{" "}
+                    <p className="mt-3 mb-3 text-center ">or</p>
+                    <div className="text-center">
+                      <button
+                        className="justify-content-center googleButton"
+                        onClick={loginGoogle}
+                      >
+                        <img
+                          src="https://logodownload.org/wp-content/uploads/2017/05/google-chrome-logo-0.png"
+                          width="30px"
+                          className="googleIcon"
+                        />
+                        Sign in with Google
+                      </button>
+                    </div>
+                    <Col className="mt-4 text-center" xs={12}>
+                      <span>Don't have an account?</span> 
                       <Link to="/Register" className="LinkRegister">
                         Sign up
                       </Link>

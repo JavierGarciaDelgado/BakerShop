@@ -5,6 +5,8 @@ body {
     height: 100vh;
 }
 .primaryButton{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
     background-color: #FED480;
     border-color: #FED480;
     color: black;
@@ -116,3 +118,4 @@ body {
     box-shadow: none !important;
     color: black;
 }
+

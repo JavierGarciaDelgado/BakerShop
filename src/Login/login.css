@@ -26,6 +26,19 @@
 
 .LinkRegister{
     text-decoration: none;
+    margin-left: 0.5em;
 }
 
+.googleButton{
+     padding:0.5em 1em 0.5em 1em;
+     border: none;
+     border-radius: 15px;
+     color:  white;
+     background-color: #4285F4;
+     box-shadow: 6px 7px 9px -3px rgba(0,0,0,0.38);
 
+}
+
+.googleIcon{
+    margin-right: 0.5em;
+}

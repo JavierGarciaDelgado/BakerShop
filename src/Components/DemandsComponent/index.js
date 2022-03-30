@@ -17,13 +17,13 @@ function DemandsComponent(props) {
     title: "",
     price: "",
     link: "",
-
   });
   const [demandComments, setDemandComments] = useState([]);
   const [useControl, setUseControl] = useState("1");
   const [useDelete, setUseDelete] = useState(1);
+  const [useDeleteButton, setUseDeleteButton] = useState("");
 
-  const deleteProducts = (id) => {
+  const deleteComments = (id) => {
     if (window.confirm("Do you really want to delete?")) {
       console.log(id);
       axios.delete(`http://localhost:5000/api/Comment/${id}`);
@@ -126,26 +126,35 @@ function DemandsComponent(props) {
             >
               Submit
             </Button>
-            {demandComments.map((comment) => (
-              <Col sm key={comment._id}>
-                <Button
-                  as={CloseButton}
-                  value={comment._id}
-                  onClick={(e) => deleteProducts(e.target.value)}
-                  className="DeleteButton deleteButtonPosition"
-                />
-                <CommentComponent
-                  userUID={comment.userUID}
-                  email={comment.email}
-                  comment={comment.comment}
-                  demandId={comment.demandId}
-                  title={comment.title}
-                  price={comment.price}
-                  link={comment.link}
-                  user={comment.user}
-                />
-              </Col>
-            ))}
+            {demandComments.map((comment) => {
+              let button =
+                comment.userUID == getUserId() &&
+                comment.user == getUserId() ? (
+                  <Button
+                    as={CloseButton}
+                    value={comment._id}
+                    onClick={(e) => deleteComments(e.target.value)}
+                    className="DeleteButton deleteButtonPosition"
+                  />
+                ) : (
+                  ""
+                );
+              return (
+                <Col sm key={comment._id}>
+                  {button}
+                  <CommentComponent
+                    userUID={comment.userUID}
+                    email={comment.email}
+                    comment={comment.comment}
+                    demandId={comment.demandId}
+                    title={comment.title}
+                    price={comment.price}
+                    link={comment.link}
+                    user={comment.user}
+                  />
+                </Col>
+              );
+            })}
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>

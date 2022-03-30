@@ -21,7 +21,7 @@ function CardComponent(props) {
       <Card style={{ width: "18rem" }} className="cardStyling">
         <Card.Img style={{ height: "300px" }} variant="top" src={props.image} />
         <Card.Body className="mb-2">
-          <Card.Title>{props.title}</Card.Title>
+          <Card.Title className="cardTitle">{props.title}</Card.Title>
           <Card.Text>
             {calculateCalification()}
             <Row >
