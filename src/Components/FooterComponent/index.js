@@ -40,7 +40,7 @@ const Footer = () => {
                   <Form.Control as="textarea" rows={12}  placeholder="Write your comments here.." />
                 </Form.Group>
               </Row>
-              <Button className="mb-3" variant="primary" type="submit" className="secondaryButton">
+              <Button className="mb-3 secondaryButton" variant="primary" type="submit">
                 Submit
               </Button>
             </Form>

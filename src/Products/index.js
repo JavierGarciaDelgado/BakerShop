@@ -22,7 +22,7 @@ function Products(props) {
     <div>
       <Header/>
       <Container>
-        <h1>{props.type}</h1>
+        <h3 className="mb-4">{props.type}</h3>
         <Row>
           {allProducts.map((product) => (
             <Col sm key = {product._id}>

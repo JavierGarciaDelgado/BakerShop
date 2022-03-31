@@ -7,28 +7,24 @@ const router = express.Router();
 //GET
 router.get("/", async (req, res) => {
   const demand = await DemandSchema.find();
-  console.log(demand);
   res.json(demand);
 });
 
 //GET BY USER
 router.get("/user/:user", async (req, res) => {
   const demand = await DemandSchema.find({ user: req.params.user });
-  console.log(demand);
   res.json(demand);
 });
 
 //GET BY TYPE
 router.get("/type/:type", async (req, res) => {
   const demand = await DemandSchema.find({ type: req.params.type });
-  console.log(demand);
   res.json(demand);
 });
 
 //GET BY DATE
 router.get("/lastAdded/lastAdded", async (req, res) => {
   const demand = await DemandSchema.find().sort({ dateOfUpload: -1 }).limit(4);
-  console.log(demand);
   res.json(demand);
 });
 

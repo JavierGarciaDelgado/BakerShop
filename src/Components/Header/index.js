@@ -19,14 +19,6 @@ const Header = ({ name, ...props }) => {
 
   const keys = Object.keys(localStorage);
 
-  /*const totalPrice = () => {
-    let price = 0;
-    keys.map(function (key) {
-      let item = JSON.parse(localStorage.getItem(key));
-      price += parseInt(item.price);
-    });
-    setTotalPrice(price) 
-  }*/
 
   const totalAmount = () => {
     let amount = 0;
@@ -40,7 +32,6 @@ const Header = ({ name, ...props }) => {
 
   const deleteProducts = (name) => {
     if (window.confirm("Do you really want to delete?")) {
-      console.log(name)
       localStorage.removeItem(name)
       setUseDelete(useDelete + 1);      
     }

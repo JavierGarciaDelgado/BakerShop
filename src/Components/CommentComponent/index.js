@@ -1,7 +1,6 @@
 import { Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import React from "react";
-
 import { Button } from "react-bootstrap";
 import "./commentComponent.css";
 import { getUserId } from "../../Config/firebase";
@@ -9,13 +8,9 @@ import { getUserId } from "../../Config/firebase";
 function CommentComponent(props) {
   
   const allFit = () => {
-    console.log(props)
-    console.log(getUserId())
     if (props.user !== getUserId()) {
-      console.log("No se puede borrar");
       return true;
     } else {
-      console.log("Ahora si se puede borrar");
       return false;
     }
   };

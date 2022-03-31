@@ -4,7 +4,7 @@ import Header from "../Components/Header";
 import ModalComponent from "../Components/ModalComponent";
 import ModalComponentEmail from "../Components/ModalComponentEmail";
 import ModalComponentPassword from "../Components/ModalComponentPassword";
-import { getUserEmail, getUserId } from "../Config/firebase";
+import { getUserEmail } from "../Config/firebase";
 import "./account.css";
 
 function Account() {

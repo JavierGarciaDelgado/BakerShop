@@ -58,7 +58,6 @@ function Product() {
     for (let index = 0; index < 5 - allProduct.calification; index++) {
       stars.push(<i className="bi bi-star"></i>);
     }
-    console.log(stars);
     return <>{stars}</>;
   };
 

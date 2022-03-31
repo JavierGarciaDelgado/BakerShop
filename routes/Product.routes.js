@@ -7,42 +7,36 @@ const router = express.Router();
 //GET
 router.get("/", async (req, res) => {
   const product = await ProductSchema.find();
-  console.log(product);
   res.json(product);
 });
 
 //GET BY ID
 router.get("/:id", async (req, res) => {
   const product = await ProductSchema.findOne({_id: req.params.id});
-  console.log(product);
   res.json(product);
 });
 
 //GET BY USER
 router.get("/user/:user", async (req, res) => {
   const product = await ProductSchema.find({user: req.params.user});
-  console.log(product);
   res.json(product);
 });
 
 //GET BY TYPE
 router.get("/type/:type", async (req, res) => {
   const product = await ProductSchema.find({type: req.params.type});
-  console.log(product);
   res.json(product);
 });
 
 //GET BY SOLD
 router.get("/sold/sold", async (req, res) => {
   const product = await ProductSchema.find().sort({sold: -1}).limit(4);
-  console.log(product);
   res.json(product);
 });
 
 //GET BY DATE
 router.get("/lastAdded/lastAdded", async(req,res) => {
   const product = await ProductSchema.find().sort({dateOfUpload: -1}).limit(4);
-  console.log(product);
   res.json(product);
 })
 

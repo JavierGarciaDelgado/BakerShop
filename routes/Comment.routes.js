@@ -7,28 +7,24 @@ const router = express.Router();
 //GET
 router.get("/", async (req, res) => {
   const Comment = await CommentSchema.find();
-  console.log(Comment);
   res.json(Comment);
 });
 
 //GET BY USER
 router.get("/user/:user", async (req, res) => {
   const Comment = await CommentSchema.find({ user: req.params.user });
-  console.log(Comment);
   res.json(Comment);
 });
 
 //GET BY demandId
 router.get("/:demandId", async (req, res) => {
   const Comment = await CommentSchema.find({ demandId: req.params.demandId });
-  console.log(Comment);
   res.json(Comment);
 });
 
 //GET BY DATE
 router.get("/lastAdded/lastAdded", async (req, res) => {
   const Comment = await CommentSchema.find().sort({ dateOfUpload: -1 }).limit(4);
-  console.log(Comment);
   res.json(Comment);
 });
 

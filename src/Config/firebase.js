@@ -50,7 +50,6 @@ export const loginWithGoogle = () => {
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
-    console.log(user)
     // ...
   }).catch((error) => {
     // Handle Errors here.

@@ -54,7 +54,6 @@ function ProductDemand() {
 
   const deleteDemand = (id) => {
     if (window.confirm("Do you really want to delete?")) {
-      console.log(id);
       axios.delete(`http://localhost:5000/api/Demand/${id}`);
       setUseDelete(useDelete + 1);
     }
@@ -76,10 +75,8 @@ function ProductDemand() {
 
   const submitForm = (e) => {
     e.preventDefault();
-    console.log(newDemands);
     axios.post(`http://localhost:5000/api/Demand/ProductDemand`, newDemands);
     setCounter(counter + 1);
-    alert(newDemands.user);
   };
 
   return (

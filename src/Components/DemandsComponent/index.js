@@ -21,11 +21,9 @@ function DemandsComponent(props) {
   const [demandComments, setDemandComments] = useState([]);
   const [useControl, setUseControl] = useState("1");
   const [useDelete, setUseDelete] = useState(1);
-  const [useDeleteButton, setUseDeleteButton] = useState("");
 
   const deleteComments = (id) => {
     if (window.confirm("Do you really want to delete?")) {
-      console.log(id);
       axios.delete(`http://localhost:5000/api/Comment/${id}`);
       setUseDelete(useDelete + 1);
     }
@@ -45,10 +43,8 @@ function DemandsComponent(props) {
 
   const allFit = () => {
     if (newComment.comment == "") {
-      console.log("está funcionando");
       return true;
     } else {
-      console.log("ya no");
       return false;
     }
   };

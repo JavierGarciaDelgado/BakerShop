@@ -1,5 +1,5 @@
 import { updateEmail } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Col, Container, Form, Modal } from "react-bootstrap";
 
 function ModalComponentEmail(props) {
@@ -7,14 +7,12 @@ function ModalComponentEmail(props) {
     email: "",
     newEmail: "",
     cnfrmNewEmail: "",
-    password:""
+    password:"",
   });
-  const [valid, setValid] = useState(false);
-  console.log(valid)
 
   const changeHandler = (e) => {
     setAllValues((prevValues) => {
-      return { ...prevValues, [e.target.name]: e.target.value };
+      return { ...prevValues, [e.target.name]: e.target.value }
     });
   };
 

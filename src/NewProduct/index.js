@@ -42,7 +42,6 @@ function NewProduct() {
   };
 
   const getProductByID = () => {
-    console.log(id);
     axios.get(`http://localhost:5000/api/Product/${id}`).then((res) => {
       const product = res.data;
       setAllValues(() => {
@@ -64,8 +63,6 @@ function NewProduct() {
           ["origin"]: product.origin,
         };
       });
-      console.log("hola");
-      console.log(allValues);
     });
   };
 
@@ -76,7 +73,6 @@ function NewProduct() {
   }, [id]);
 
   useEffect(() => {
-    console.log(allValues);
   }, [allValues]);
 
   const changeHandler = (e) => {
@@ -105,10 +101,8 @@ function NewProduct() {
       allValues.price == 0 ||
       allValues.origin == ""
     ) {
-      console.log("está funcionando");
       return true;
     } else {
-      console.log("ya no");
       return false;
     }
   };

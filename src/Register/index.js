@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./register.css";
 import { Link } from "react-router-dom";
-import { CreateWithEmail, getUserId } from "../Config/firebase";
+import { CreateWithEmail } from "../Config/firebase";
 import { Button, Col, Container } from "react-bootstrap";
 
 function Register() {
@@ -22,7 +22,6 @@ function Register() {
   const validatePassword = () => {
     const password = document.getElementById("user-pass").value;
     const cnfrmPassword = document.getElementById("user-repeatpass").value;
-    console.log(password, cnfrmPassword);
 
     if (password.length !== 0) {
       if (password !== cnfrmPassword) {

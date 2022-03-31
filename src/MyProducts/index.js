@@ -24,7 +24,6 @@ function MyProducts() {
 
   const deleteProducts = (id) => {
     if (window.confirm("Do you really want to delete?")) {
-      console.log(id);
       axios.delete(`http://localhost:5000/api/Product/${id}`);
       setUseDelete(useDelete + 1);
     }
@@ -43,7 +42,6 @@ function MyProducts() {
         <Row>
           {allProducts.map((product) => (
             <Col sm key={product._id}>
-              {console.log(allProducts.id)}
               <Button as={Link} to={`/NewProduct/${product._id}`} className="EditButton"><i class="bi bi-pencil-square"></i></Button>
               <CloseButton
                 value={product._id}
