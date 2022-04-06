@@ -58,8 +58,10 @@
   color: black;
 }
 
-.FinalPrice {
-  position: relative;
-  left: 7em;
-  top: -55px;
+.finalPrice {
+  text-align: right;
+}
+
+.price{
+  margin-left: 1em;
 }

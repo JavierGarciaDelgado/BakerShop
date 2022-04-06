@@ -44,6 +44,7 @@ function Product() {
   useEffect(() => {
     getProductByID();
   }, [id]);
+  
   useEffect(() => {
     getProductsByType();
   }, [allProduct]);

@@ -115,7 +115,8 @@ const Header = ({ name, ...props }) => {
                     </Col>
                   );
                 })}
-                <Row><h1>TOTAL</h1><h1 className="FinalPrice">{totalPrice.toFixed(2)}€</h1></Row>
+                <Row><h3 className="finalPrice mt-4 mb-4">TOTAL<span className="price">{totalPrice.toFixed(2)}€</span></h3></Row>
+                <Button as={Link} to="/PaymentGateway" className="primaryButton">Comprar ahora</Button>
                 
               </Offcanvas.Body>
             </Offcanvas>

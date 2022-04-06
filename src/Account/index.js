@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import Header from "../Components/Header";
 import ModalComponent from "../Components/ModalComponent";
 import ModalComponentEmail from "../Components/ModalComponentEmail";
@@ -32,15 +32,15 @@ function Account() {
             </Col>
             <Col>
               {
-                <Button
+                <span
                   className="changeEmail"
                   onClick={() => setModalPasswordShow(true)}
                 >
                   Change Password<i class="bi bi-pencil-square"></i>
-                </Button>
+                </span>
               }
             </Col>
-            <p>
+            <p className="mt-3">
               if you want to change your password, click on "Change Password"
               and complete de areas with the correct information
             </p>
@@ -82,12 +82,12 @@ function Account() {
 
         <Row className="mt-5">
           <Col>
-            <h3>BILLING DETAILS</h3>
+            <h3 className="mt-0">BILLING DETAILS</h3>
           </Col>
           <Col>
-            <Button className="changeEmail" onClick={() => setModalShow(true)}>
+            <span className="changeEmail" onClick={() => setModalShow(true)}>
               edit<i class="bi bi-pencil-square"></i>
-            </Button>
+            </span>
           </Col>
         </Row>
         <Container>

@@ -72,18 +72,11 @@ function NewProduct() {
     }
   }, [id]);
 
+  const [isDisabled, setIsDisabled] = useState(true);
   useEffect(() => {
-  }, [allValues]);
-
-  const changeHandler = (e) => {
-    setAllValues((prevValues) => {
-      return { ...prevValues, [e.target.name]: e.target.value };
-    });
-  };
-
-  const allFit = () => {
+    console.log(ImageName)
     if (
-      /*allValues.image == "" ||
+      ImageName == "" ||
       allValues.type == "" ||
       allValues.name == "" ||
       allValues.weight == "" ||
@@ -97,14 +90,20 @@ function NewProduct() {
       allValues.protein == "" ||
       allValues.salt == "" ||
       allValues.description == "" ||
-      */ allValues.price == 999 ||
+      allValues.price == 999 ||
       allValues.price == 0 ||
       allValues.origin == ""
     ) {
-      return true;
+      setIsDisabled(true);
     } else {
-      return false;
+      setIsDisabled(false);
     }
+  }, [allValues,ImageName]);
+
+  const changeHandler = (e) => {
+    setAllValues((prevValues) => {
+      return { ...prevValues, [e.target.name]: e.target.value };
+    });
   };
 
   useEffect(()=>{
@@ -359,7 +358,7 @@ function NewProduct() {
               variant="primary"
               type="submit"
               className="primaryButton"
-              disabled={allFit()}
+              disabled={isDisabled}
             >
               Submit
             </Button>
