@@ -55,13 +55,10 @@ export const loginWithGoogle = () => {
     // Handle Errors here.
     const errorCode = error.code;
     const errorMessage = error.message;
-    alert(errorMessage)
     // The email of the user's account used.
     const email = error.email;
-    alert(email)
     // The AuthCredential type that was used.
     const credential = GoogleAuthProvider.credentialFromError(error);
-    alert(credential)
     // ...
 })}; //Exportamos el loginwithgoogle para posteriormente utilizarlo en login.js
 

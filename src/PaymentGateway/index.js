@@ -8,8 +8,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import "./paymentGateway.css";
-import { Col, Row } from "react-bootstrap";
-import { Button } from "bootstrap";
+import { Col } from "react-bootstrap";
 import CartCardComponent from "../Components/CartCardsComponent";
 
 const stripePromise = loadStripe(

@@ -137,37 +137,38 @@ function DemandsComponent(props) {
             ) : (
               ""
             )}
-
-            {demandComments.map((comment) => {
-              let button =
-                comment.userUID == getUserId() &&
-                comment.user == getUserId() ? (
-                  <Button
-                    value={comment._id}
-                    onClick={(e) => deleteComments(e.target.value)}
-                    className="deleteButtonPosition"
-                  >
-                    <i class="bi bi-trash"></i>
-                  </Button>
-                ) : (
-                  ""
+            <div>
+              {demandComments.map((comment) => {
+                let button =
+                  comment.userUID == getUserId() ||
+                  comment.user == getUserId() ? (
+                    <Button
+                      value={comment._id}
+                      onClick={(e) => deleteComments(e.target.value)}
+                      className="deleteButtonPosition"
+                    >
+                      <i class="bi bi-trash"></i>
+                    </Button>
+                  ) : (
+                    ""
+                  );
+                return (
+                  <Col sm key={comment._id}>
+                    {button}
+                    <CommentComponent
+                      userUID={comment.userUID}
+                      email={comment.email}
+                      comment={comment.comment}
+                      demandId={comment.demandId}
+                      title={comment.title}
+                      price={comment.price}
+                      link={comment.link}
+                      user={comment.user}
+                    />
+                  </Col>
                 );
-              return (
-                <Col sm key={comment._id}>
-                  {button}
-                  <CommentComponent
-                    userUID={comment.userUID}
-                    email={comment.email}
-                    comment={comment.comment}
-                    demandId={comment.demandId}
-                    title={comment.title}
-                    price={comment.price}
-                    link={comment.link}
-                    user={comment.user}
-                  />
-                </Col>
-              );
-            })}
+              })}
+            </div>
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>

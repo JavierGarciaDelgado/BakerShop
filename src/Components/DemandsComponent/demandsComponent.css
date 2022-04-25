@@ -1,7 +1,7 @@
 .deleteButtonPosition{
     position: relative;
     left:73rem;
-    top:12.7rem;
+    bottom:-12.7rem;
     z-index: 100;
     background-color: #ffffff !important;
     border-color: #ffffff;
