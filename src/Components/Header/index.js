@@ -6,6 +6,9 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Badge from "react-bootstrap/Badge";
 import "./Header.css";
 import CartCardComponent from "../CartCardsComponent";
+import axios from "axios";
+import bakerShopHeader from "../../logo/bakerShopHeader.png";
+import bakerShopHeaderText from "../../logo/bakerShopHeaderText.png";
 
 const Header = ({ name, ...props }) => {
   const [show, setShow] = useState(false);
@@ -30,6 +33,14 @@ const Header = ({ name, ...props }) => {
   }
 
 
+  const soldProducts = () => {
+    keys.map(function (key) {
+      let item = JSON.parse(localStorage.getItem(key));
+        axios
+          .put(`http://localhost:5000/api/Product/updateSold/${item._id}/${item.amount}`)
+          
+    });
+  }
   const deleteProducts = (name) => {
     if (window.confirm("Do you really want to delete?")) {
       localStorage.removeItem(name)
@@ -37,6 +48,7 @@ const Header = ({ name, ...props }) => {
     }
     
   };
+  
 
   const log_out = (e) => {
     e.preventDefault();
@@ -51,7 +63,8 @@ const Header = ({ name, ...props }) => {
       <Container>
         <Navbar.Brand>
           <Nav.Link as={Link} to="/">
-            BakerShop
+          <img src={bakerShopHeader} height={50} width={70} />
+          <img src={bakerShopHeaderText} height={30} width={100} />
           </Nav.Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -116,7 +129,7 @@ const Header = ({ name, ...props }) => {
                   );
                 })}
                 <Row><h3 className="finalPrice mt-4 mb-4">TOTAL<span className="price">{totalPrice.toFixed(2)}€</span></h3></Row>
-                <Button as={Link} to="/PaymentGateway" className="primaryButton">Comprar ahora</Button>
+                <Button as={Link} to="/PaymentGateway" onClick={soldProducts} className="primaryButton">PROCESS ORDER</Button>
                 
               </Offcanvas.Body>
             </Offcanvas>

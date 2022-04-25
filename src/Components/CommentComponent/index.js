@@ -19,8 +19,9 @@ function CommentComponent(props) {
   return (
     <div className="mt-3">
       <Container>
+        {console.log(props)}
         <Card>
-          <Card.Header>{props.userUID}</Card.Header>
+          <Card.Header>{props.email}</Card.Header>
           <Card.Body>
             <Card.Title className="titlePosition">{props.title}</Card.Title>
             <Card.Text>{props.comment}</Card.Text>

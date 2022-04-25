@@ -3,6 +3,7 @@ import { loginWithGoogle, LoginWithPassword } from "../Config/firebase";
 import { Link } from "react-router-dom";
 import "./login.css";
 import { Col, Container } from "react-bootstrap";
+import bakerShop from "../logo/bakerShop.png";
 
 function Login() {
   const [email, setEmail] = useState();
@@ -19,7 +20,7 @@ function Login() {
   };
 
   return (
-    <div className="loginBackGround" id="login">
+    <div className="loginBackGround loginLogo" id="login">
       <div className="loginWindow">
         <div id="login-row" className="">
           <div id="login-column" className="col-md-3">

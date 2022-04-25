@@ -44,7 +44,7 @@ function Register() {
   }
 
   return (
-    <div className="loginBackGround" id="login">
+    <div className="loginBackGround loginLogo" id="login">
       <div className="containerRegister loginWindow">
         <div id="login-row" className="">
           <div id="register-column" className="col-md-3">

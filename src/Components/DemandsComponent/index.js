@@ -1,7 +1,7 @@
 import { Form, Row, Col, CloseButton } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
-import { getUserId } from "../../Config/firebase";
+import { getUserEmail, getUserId } from "../../Config/firebase";
 import axios from "axios";
 import "./demandsComponent.css";
 import { Button } from "react-bootstrap";
@@ -11,7 +11,7 @@ function DemandsComponent(props) {
   const [newComment, setNewComment] = useState({
     comment: "",
     userUID: getUserId(),
-    email: "",
+    email: getUserEmail(),
     demandId: props.demandId,
     user: props.user,
     title: "",
@@ -31,7 +31,7 @@ function DemandsComponent(props) {
 
   const PostComment = () => {
     axios.post(`http://localhost:5000/api/Comment/newComment`, newComment);
-    alert("Product posted");
+    alert("comment posted");
     setUseControl(useControl + 1);
   };
 
@@ -67,69 +67,88 @@ function DemandsComponent(props) {
             <span className="dateDemand">{props.dateOfUpload}</span>
           </Accordion.Header>
           <Accordion.Body>
-            <p><b>Description of the product:</b> {props.description}</p>
-            <p><b>Type of product: </b>{props.type}</p>
-            <p><b>Origin: </b> {props.origin}</p>
-            <p className="mb-5"><b>Offer:</b>{props.price}/per Kg</p>
-            <Form.Group className="mb-3">
-              <Form.Control
-                value={newComment.title}
-                name="title"
-                onChange={(e) => changeHandler(e)}
-                placeholder="Title"
-              />
-            </Form.Group>
-            <Row>
-              <Col>
+            <p>
+              <b>Description of the product:</b> {props.description}
+            </p>
+            <p>
+              <b>Type of product: </b>
+              {props.type}
+            </p>
+            <p>
+              <b>Origin: </b> {props.origin}
+            </p>
+            <p className="mb-5">
+              <b>Offer:</b>
+              {props.price}€/per Kg
+            </p>
+
+            {props.user !== getUserId() ? (
+              <span>
                 <Form.Group className="mb-3">
                   <Form.Control
-                    value={newComment.price}
-                    name="price"
+                    value={newComment.title}
+                    name="title"
                     onChange={(e) => changeHandler(e)}
-                    placeholder="Price per kg"
+                    placeholder="Title"
                   />
                 </Form.Group>
-              </Col>
-              <Col>
+                <Row>
+                  <Col>
+                    <Form.Group className="mb-3">
+                      <Form.Control
+                        value={newComment.price}
+                        name="price"
+                        onChange={(e) => changeHandler(e)}
+                        placeholder="Price per kg"
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group className="mb-3">
+                      <Form.Control
+                        value={newComment.link}
+                        name="link"
+                        onChange={(e) => changeHandler(e)}
+                        placeholder="Introduce the link of your product offer like this 61d722dca771390d12108c4b"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
                 <Form.Group className="mb-3">
                   <Form.Control
-                    value={newComment.link}
-                    name="link"
+                    value={newComment.comment}
+                    name="comment"
                     onChange={(e) => changeHandler(e)}
-                    placeholder="Introduce the link of your product offer like this /61d722dca771390d12108c4b"
+                    placeholder="Comment"
                   />
                 </Form.Group>
-              </Col>
-            </Row>
 
-            <Form.Group className="mb-3">
-              <Form.Control
-                value={newComment.comment}
-                name="comment"
-                onChange={(e) => changeHandler(e)}
-                placeholder="Comment"
-              />
-            </Form.Group>
+                <Button
+                  onClick={(e) => PostComment(e)}
+                  variant="primary"
+                  type="submit"
+                  className="primaryButton"
+                  disabled={allFit()}
+                >
+                  Submit
+                </Button>
+              </span>
+            ) : (
+              ""
+            )}
 
-            <Button
-              onClick={(e) => PostComment(e)}
-              variant="primary"
-              type="submit"
-              className="primaryButton"
-              disabled={allFit()}
-            >
-              Submit
-            </Button>
             {demandComments.map((comment) => {
               let button =
                 comment.userUID == getUserId() &&
                 comment.user == getUserId() ? (
                   <Button
-                    as={CloseButton}
                     value={comment._id}
                     onClick={(e) => deleteComments(e.target.value)}
-                    className="DeleteButton deleteButtonPosition"
-                  />
+                    className="deleteButtonPosition"
+                  >
+                    <i class="bi bi-trash"></i>
+                  </Button>
                 ) : (
                   ""
                 );

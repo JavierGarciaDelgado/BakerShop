@@ -81,16 +81,32 @@ router.post("/newProduct", async (req,res) => {
   res.send(product)
 });
 
+//UPDATE PRODUCT SOLD
+
+router.put("/updateSold/:id/:amount", async (req, res) => {
+	try {
+		const product = await ProductSchema.findOne({ _id: req.params.id })
+		const amount = req.params.amount;
+		
+			product.sold = product.sold + Number(amount);
+
+	await product.save()
+	res.send(product)
+} catch {
+	res.status(404)
+	res.send({ error: "Product doesn't exist!" })
+}
+});
 //UPDATE PRODUCT
 
 router.put("/newProduct/:id", async (req, res) => {
 	try {
 		const product = await ProductSchema.findOne({ _id: req.params.id })
 
-		if (req.body.name) {
+	if (req.body.name) {
 			product.name = req.body.name
 		}
-		if (req.body.type) {
+	if (req.body.type) {
 			product.type = req.body.type
 		}
     if (req.body.weight) {

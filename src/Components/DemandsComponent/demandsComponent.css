@@ -1,7 +1,66 @@
 .deleteButtonPosition{
     position: relative;
     left:73rem;
-    top:12.2rem;
+    top:12.7rem;
+    z-index: 100;
+    background-color: #ffffff !important;
+    border-color: #ffffff;
+    color: black;
+}
+
+.deleteButtonPosition:hover{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0px !important;
+    box-shadow: none;
+    color: black;
+}
+
+.deleteButtonPosition:active{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0px !important;
+    box-shadow: none;
+    color: black;
+}
+
+.deleteButtonPosition:visited{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0px !important;
+    box-shadow: none;
+    color: black;
+}
+
+.deleteButtonPosition:focus{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0px !important;
+    box-shadow: none !important;
+    color: black;
+}
+
+.deleteButtonPosition:focus-visible{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0px !important;
+    box-shadow: none;
+    color: black;
+}
+
+.deleteButtonPosition:target{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0px !important;
+    box-shadow: none;
+    color: black;
+}
+.deleteButtonPosition:disabled{
+    background-color: #ffffff;
+    border-color: #ffffff;
+    outline: 0px !important;
+    box-shadow: none;
+    color: black;
 }
 
 .dateDemand{

@@ -79,7 +79,7 @@ function Product() {
             <h5>{allProduct.brand}</h5>
             {calculateCalification()}
             <hr />
-            <p>{allProduct.description}</p>
+            <p className="breakLineDescription">{allProduct.description}</p>
             <p className="priceMargin">
               <small>Precio:</small> {allProduct.price}€/Unidad
             </p>

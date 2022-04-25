@@ -77,6 +77,7 @@ function ProductDemand() {
     e.preventDefault();
     axios.post(`http://localhost:5000/api/Demand/ProductDemand`, newDemands);
     setCounter(counter + 1);
+    alert("Demand Posted")
   };
 
   return (

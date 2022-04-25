@@ -5,6 +5,12 @@
     height: 100vh;
 }
 
+.loginLogo{
+    background-image : url('../logo/bakerShop.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 #login-box {
     height: 650px;
     background-color: #fffafa;

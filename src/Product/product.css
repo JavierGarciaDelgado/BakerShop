@@ -5,3 +5,6 @@
 small{
     color:gray;
 }
+.breakLineDescription{
+    white-space: pre-line;
+}
